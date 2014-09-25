@@ -97,7 +97,7 @@ namespace IRCBot
 								var host = splitInput[0].Substring(1);
 								var chan = splitInput[2];
 								var cmd = splitInput[3].Substring(1);
-								var says = "";
+								var says = "\u000308\u2502\u000315 ";
 								var msg = "";
 								try
 								{
