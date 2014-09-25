@@ -12,7 +12,7 @@ namespace IRCBot
 		static void Main(string[] args)
 		{
 			// Hardcoded Connection
-			var HardCodedConnection = false;
+			var HardCodedConnection = true;
 			var server = "irc.subluminal.net";
 			var port = 6667;
 			var nick = "Sharpie";
@@ -101,7 +101,10 @@ namespace IRCBot
 								var msg = "";
 								try
 								{
-									msg = splitInput[4];
+									for (var i = 4; i < splitInput.Length; i++)
+									{
+										msg += splitInput[i] + " ";
+									}
 								}
 								catch
 								{
@@ -110,18 +113,23 @@ namespace IRCBot
 
 								switch (cmd)
 								{
+									case "#consay":
+										Status.Do("Executing: 'Consay'");
+										Plugins.Consay.Main(host, chan, says, cmd, msg);
+										writer.Flush();
+										break;
 									case "#hello":
 										Status.Do("Executing: 'HelloWorld'");
 										Plugins.HelloWorld.Main(host, chan, says, cmd, msg);
 										writer.Flush();
 										break;
+									case "#join":
+										writer.WriteLine("JOIN " + msg);
+										writer.Flush();
+										break;
 									case "#version":
 										Status.Do("Executing: 'Version'");
 										Plugins.Version.Main(host, chan, says, cmd, msg);
-										writer.Flush();
-										break;
-									case "#join":
-										writer.WriteLine("JOIN " + msg);
 										writer.Flush();
 										break;
 									default:
