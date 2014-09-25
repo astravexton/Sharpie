@@ -2,7 +2,6 @@
 *Sharpie* is **a IRC Bot built in C#**, compatible with both .NET and Mono.
 
 ### Commands
-===
 * **#consay [text]** *Consay*
   * Prints [text] to the console.
 * **#hello** *HelloWorld*
