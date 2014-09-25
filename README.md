@@ -1,2 +1,2 @@
 # Sharpie
-**_An IRC Bot born an bread in C# (.NET/Mono)_**
+*Sharpie* is **a IRC Bot built in C#**, compatible with both .NET and Mono.
