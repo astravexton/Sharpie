@@ -8,7 +8,7 @@ namespace IRCBot
 {
 	public class Utilities
 	{
-		
+
 	}
 	public class Status
 	{
@@ -82,6 +82,20 @@ namespace IRCBot
 			Console.ForegroundColor = ConsoleColor.DarkGray;
 			Console.WriteLine("===");
 			Console.ResetColor();
+		}
+	}
+	public class PluginHelp
+	{
+		public static void Main(string name, string version, string desc)
+		{
+			if (String.IsNullOrEmpty(version) || String.IsNullOrWhiteSpace(version))
+			{
+				Sharpie.writer.WriteLine(name + " | " + desc);
+			}
+			else
+			{
+				Sharpie.writer.WriteLine(name + " (v" + version + ")" + " | " + desc);
+			}
 		}
 	}
 }

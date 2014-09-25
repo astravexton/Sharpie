@@ -41,7 +41,7 @@ namespace IRCBot
 
 			var SERVER = server;
 			var PORT = port;
-			var PORTString = port.ToString();
+			var PORTToString = port.ToString();
 			var USER = "USER Sharpie 0 * :Sharpie";
 			var NICK = nick;
 			var CHANNEL = channel;
@@ -53,7 +53,7 @@ namespace IRCBot
 
 			try
 			{
-				Status.Do("Connecting to IRC: '" + SERVER + ":" + PORTString + "'");
+				Status.Do("Connecting to IRC: '" + SERVER + ":" + PORTToString + "'");
 				irc = new TcpClient(SERVER, PORT);
 				stream = irc.GetStream();
 				reader = new StreamReader(stream);
@@ -135,10 +135,6 @@ namespace IRCBot
 									default:
 										break;
 								}
-
-								//Console.WriteLine("! Host:    " + splitInput[0]);
-								//Console.WriteLine("! Channel: " + splitInput[2]);
-								//Console.WriteLine("! Message: " + splitInput[3].Substring(1));
 								writer.Flush();
 								break;
 							default:
