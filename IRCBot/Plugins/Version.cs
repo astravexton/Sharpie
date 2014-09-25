@@ -10,7 +10,7 @@ namespace IRCBot.Plugins
 	{
 		public static void Main(string host, string chan, string says, string cmd, string msg)
 		{
-			Sharpie.writer.WriteLine("PRIVMSG " + chan + " :" + says + "Sharpie, v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + "[http://github.com/electricduck/sharpie]");
+			Sharpie.writer.WriteLine("PRIVMSG " + chan + " :" + says + "Sharpie, v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + " [http://github.com/electricduck/sharpie]");
 		}
 	}
 }
