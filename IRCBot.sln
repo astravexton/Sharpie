@@ -14,6 +14,18 @@ Global
 		{26FA7AF9-691E-430A-B897-534FB1F4769D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26FA7AF9-691E-430A-B897-534FB1F4769D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = IRCBot\IRCBot.csproj
+		Policies = $0
+		$0.VersionControlPolicy = $1
+		$1.CommitMessageStyle = $2
+		$2.FirstFilePrefix = 
+		$2.FileSeparator = ", "
+		$2.LineAlign = 0
+		$2.InterMessageLines = 0
+		$2.Wrap = False
+		$1.inheritsSet = Mono
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
