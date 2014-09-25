@@ -140,15 +140,19 @@ namespace IRCBot
 					}
 
 					// Close all streams
+					Status.Error("Shutdown Sharpie");
 					writer.Close();
 					reader.Close();
+					Status.OK("Close Stream Reader/Writer");
 					irc.Close();
+					Status.OK("Close IRC connection");
+					Status.OK("Bye bye!");
 				}
 			}
 			catch (Exception e)
 			{
 				// Show the exception, sleep for a while and try to establish a new connection to irc server
-				Console.WriteLine(e.ToString());
+				Status.Error(e.ToString());
 				Thread.Sleep(5000);
 				string[] argv = { };
 				Main(argv);
