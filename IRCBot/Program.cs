@@ -144,7 +144,7 @@ namespace IRCBot
 					}
 
 					// Close all streams
-					Status.Error("Shutdown Sharpie");
+					Status.Error("Shutdown");
 					writer.Close();
 					reader.Close();
 					Status.OK("Close Stream Reader/Writer");
