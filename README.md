@@ -1,3 +1,2 @@
 # Sharpie
-## An IRC Bot born and bread in C# (.NET/Mono)
-====
+**_An IRC Bot born an bread in C# (.NET/Mono)_**
