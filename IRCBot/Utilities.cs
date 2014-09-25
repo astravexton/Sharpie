@@ -10,6 +10,13 @@ namespace IRCBot
 	{
 
 	}
+	public class Say
+	{
+		public static void IRC(string chan, string text)
+		{
+			Sharpie.writer.WriteLine ("PRIVMSG " + chan + " :" + text);
+		}
+	}
 	public class Status
 	{
 		public static void Welcome()
@@ -84,6 +91,13 @@ namespace IRCBot
 			Console.ForegroundColor = ConsoleColor.DarkGray;
 			Console.WriteLine("===");
 			Console.ResetColor();
+		}
+	}
+	public class Formatting
+	{
+		public static string Sep()
+		{
+			return " \u000314| \u000315";
 		}
 	}
 	public class PluginHelp
