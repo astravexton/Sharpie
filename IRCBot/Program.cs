@@ -37,7 +37,7 @@ namespace IRCBot
 			}
 			Line.Double();
 
-			Status.Do("Initalizing");
+			Status.Do("Initializing");
 
 			var SERVER = server;
 			var PORT = port;
