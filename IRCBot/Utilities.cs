@@ -17,6 +17,8 @@ namespace IRCBot
 			Console.ForegroundColor = ConsoleColor.Black;
 			Console.BackgroundColor = ConsoleColor.Yellow;
 			Console.Write("Sharpie");
+			Console.BackgroundColor = ConsoleColor.DarkGray;
+			Console.Write ("|");
 			Console.BackgroundColor = ConsoleColor.DarkYellow;
 			Console.Write(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
 			Console.ResetColor();
