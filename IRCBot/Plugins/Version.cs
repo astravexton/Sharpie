@@ -10,7 +10,7 @@ namespace IRCBot.Plugins
 	{
 		public static void Main(string host, string chan, string says, string cmd, string msg)
 		{
-			Sharpie.writer.WriteLine("PRIVMSG " + chan + " :" + says + "Sharpie" + " | " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + " | " + Environment.OSVersion + " | " + IsThisMono());
+			Sharpie.writer.WriteLine("PRIVMSG " + chan + " :" + says + "\u0002\u000300Sharpie\u000f" + " \u000314| \u000315" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + " \u000314| \u000315" + Environment.OSVersion + " \u000314| \u000315" + IsThisMono());
 		}
 		public static string IsThisMono() {
 			Type t = Type.GetType ("Mono.Runtime");
