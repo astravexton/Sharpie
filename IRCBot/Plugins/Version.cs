@@ -10,7 +10,7 @@ namespace IRCBot.Plugins
 	{
 		public static void Main(string host, string chan, string says, string cmd, string msg)
 		{
-			Say.IRC(chan, says + Formatting.Icon("Sharpie") + Formatting.Sep() + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + Formatting.Sep() + Environment.OSVersion + Formatting.Sep() + IsThisMono());
+			Say.IRC(chan, says + Formatting.Icon("Sharpie") + Formatting.Sep() + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + Formatting.Sep() + Environment.OSVersion + " (" + Environment.MachineName + ")" + Formatting.Sep() + IsThisMono());
 		}
 		public static string IsThisMono() {
 			Type t = Type.GetType ("Mono.Runtime");

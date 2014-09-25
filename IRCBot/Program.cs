@@ -13,7 +13,7 @@ namespace IRCBot
 		static void Main (string[] args)
 		{
 			// Hardcoded Connection
-			var HardCodedConnection = true;
+			var HardCodedConnection = false;
 			var server = "irc.subluminal.net";
 			var port = 6667;
 			var nick = "Sharpie";
