@@ -9,7 +9,8 @@ namespace IRCBot
 	class Sharpie
 	{
 		public static StreamWriter writer;
-		static void Main(string[] args)
+
+		static void Main (string[] args)
 		{
 			// Hardcoded Connection
 			var HardCodedConnection = true;
@@ -18,30 +19,27 @@ namespace IRCBot
 			var nick = "Sharpie";
 			var channel = "#test";
 
-			Status.Welcome();
-			Line.Single();
-			if (HardCodedConnection == false)
-			{
-				Status.Input("Server:  ");
-				server = Console.ReadLine();
-				Status.Input("Port:    ");
-				port = Convert.ToInt32(Console.ReadLine());
-				Status.Input("Nick:    ");
-				nick = Console.ReadLine();
-				Status.Input("Channel: ");
-				channel = Console.ReadLine();
+			Status.Welcome ();
+			Line.Single ();
+			if (HardCodedConnection == false) {
+				Status.Input ("Server:  ");
+				server = Console.ReadLine ();
+				Status.Input ("Port:    ");
+				port = Convert.ToInt32 (Console.ReadLine ());
+				Status.Input ("Nick:    ");
+				nick = Console.ReadLine ();
+				Status.Input ("Channel: ");
+				channel = Console.ReadLine ();
+			} else {
+				Status.OK ("Using hardcoded connection settings");
 			}
-			else
-			{
-				Status.OK("Using hardcoded connection settings");
-			}
-			Line.Double();
+			Line.Double ();
 
-			Status.Do("Initializing");
+			Status.Do ("Initializing");
 
 			var SERVER = server;
 			var PORT = port;
-			var PORTToString = port.ToString();
+			var PORTToString = port.ToString ();
 			var USER = "USER Sharpie 0 * :Sharpie";
 			var NICK = nick;
 			var CHANNEL = channel;
@@ -51,115 +49,113 @@ namespace IRCBot
 			string inputLine;
 			StreamReader reader;
 
-			try
-			{
-				Status.Do("Connecting to IRC: '" + SERVER + ":" + PORTToString + "'");
-				irc = new TcpClient(SERVER, PORT);
-				stream = irc.GetStream();
-				reader = new StreamReader(stream);
-				writer = new StreamWriter(stream);
-				Status.Do("Setting Nick: '" + NICK + "'");
-				writer.WriteLine("NICK " + NICK);
-				writer.Flush();
-				writer.WriteLine(USER);
-				writer.Flush();
+			try {
+				Status.Do ("Connecting to IRC: '" + SERVER + ":" + PORTToString + "'");
+				irc = new TcpClient (SERVER, PORT);
+				stream = irc.GetStream ();
+				reader = new StreamReader (stream);
+				writer = new StreamWriter (stream);
+				Status.Do ("Setting Nick: '" + NICK + "'");
+				writer.WriteLine ("NICK " + NICK);
+				writer.Flush ();
+				writer.WriteLine (USER);
+				writer.Flush ();
 
-				while (true)
-				{
-					while ((inputLine = reader.ReadLine()) != null)
-					{
-						Status.SendIn(inputLine);
+				while (true) {
+					while ((inputLine = reader.ReadLine ()) != null) {
+						Status.SendIn (inputLine);
 
 						// Split the lines sent from the server by spaces. This seems the easiest way to parse them.
-						string[] splitInput = inputLine.Split(new Char[] { ' ' });
+						string[] splitInput = inputLine.Split (new Char[] { ' ' });
 
-						if (splitInput[0] == "PING")
-						{
-							string PongReply = splitInput[1];
+						if (splitInput [0] == "PING") {
+							string PongReply = splitInput [1];
 							//Console.WriteLine("->PONG " + PongReply);
-							writer.WriteLine("PONG " + PongReply);
-							writer.Flush();
+							writer.WriteLine ("PONG " + PongReply);
+							writer.Flush ();
 							continue;
 						}
 
-						switch (splitInput[1])
-						{
-							// This is the 'raw' number, put out by the server. Its the first one
-							// so I figured it'd be the best time to send the join command.
-							// I don't know if this is standard practice or not.
-							case "001":
-								string JoinString = "JOIN " + CHANNEL;
-								Status.Do("Joining Channel: '" + CHANNEL + "'");
-								writer.WriteLine(JoinString);
-								writer.Flush();
-								break;
-							case "PRIVMSG":
-								var host = splitInput[0].Substring(1);
-								var chan = splitInput[2];
-								var cmd = splitInput[3].Substring(1);
-								var says = "\u000308\u2502\u000315 ";
-								var msg = "";
-								try
-								{
-									for (var i = 4; i < splitInput.Length; i++)
-									{
-										msg += splitInput[i] + " ";
-									}
+						switch (splitInput [1]) {
+						// This is the 'raw' number, put out by the server. Its the first one
+						// so I figured it'd be the best time to send the join command.
+						// I don't know if this is standard practice or not.
+						case "001":
+							string JoinString = "JOIN " + CHANNEL;
+							Status.Do ("Joining Channel: '" + CHANNEL + "'");
+							writer.WriteLine (JoinString);
+							writer.Flush ();
+							break;
+						case "PRIVMSG":
+							var host = splitInput [0].Substring (1);
+							var chan = splitInput [2];
+							var cmd = splitInput [3].Substring (1);
+							var says = "\u000308\u2502\u000315 ";
+							var msg = "";
+							try {
+								for (var i = 4; i < splitInput.Length; i++) {
+									msg += splitInput [i] + " ";
 								}
-								catch
-								{
-									msg = "";
-								}
+							} catch {
+								msg = "";
+							}
 
-								switch (cmd)
-								{
-									case "#consay":
-										Status.Do("Executing: 'Consay'");
-										Plugins.Consay.Main(host, chan, says, cmd, msg);
-										writer.Flush();
-										break;
-									case "#hello":
-										Status.Do("Executing: 'HelloWorld'");
-										Plugins.HelloWorld.Main(host, chan, says, cmd, msg);
-										writer.Flush();
-										break;
-									case "#join":
-										writer.WriteLine("JOIN " + msg);
-										writer.Flush();
-										break;
-									case "#version":
-										Status.Do("Executing: 'Version'");
-										Plugins.Version.Main(host, chan, says, cmd, msg);
-										writer.Flush();
-										break;
-									default:
-										break;
-								}
-								writer.Flush();
+							switch (cmd) {
+							case "#consay":
+								Status.Do ("Executing: 'Consay'");
+								Plugins.Consay.Main (host, chan, says, cmd, msg);
+								writer.Flush ();
+								break;
+							case "#hello":
+								Status.Do ("Executing: 'HelloWorld'");
+								Plugins.HelloWorld.Main (host, chan, says, cmd, msg);
+								writer.Flush ();
+								break;
+							case "#join":
+								writer.WriteLine ("JOIN " + msg);
+								writer.Flush ();
+								break;
+							case "#np":
+								Status.Do ("Executing: 'LastFM'");
+								Plugins.LastFM.Main (host, chan, says, cmd, msg);
+								writer.Flush ();
+								break;
+							case "#version":
+								Status.Do ("Executing: 'Version'");
+								Plugins.Version.Main (host, chan, says, cmd, msg);
+								writer.Flush ();
+								break;
+							case "#view":
+								Status.Do ("Executing: 'RSXView'");
+								Plugins.RSXView.Main (host, chan, says, cmd, msg);
+								writer.Flush ();
 								break;
 							default:
 								break;
+							}
+							writer.Flush ();
+							break;
+						default:
+							break;
 						}
 
 					}
 
 					// Close all streams
-					Status.Error("Shutdown");
-					writer.Close();
-					reader.Close();
-					Status.OK("Close Stream Reader/Writer");
-					irc.Close();
-					Status.OK("Close IRC connection");
-					Status.OK("Bye bye!");
+					Status.Error ("Shutdown");
+					writer.Close ();
+					reader.Close ();
+					Status.OK ("Close Stream Reader/Writer");
+					irc.Close ();
+					Status.OK ("Close IRC connection");
+					Status.OK ("Bye bye!");
 				}
-			}
-			catch (Exception e)
-			{
+			} catch (Exception e) {
 				// Show the exception, sleep for a while and try to establish a new connection to irc server
-				Status.Error(e.ToString());
-				Thread.Sleep(5000);
+				Status.Error (e.ToString ());
+				Thread.Sleep (5000);
 				string[] argv = { };
-				Main(argv);
+				Main (argv);
 			}
 
 		}

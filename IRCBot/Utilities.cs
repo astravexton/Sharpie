@@ -99,6 +99,10 @@ namespace IRCBot
 		{
 			return " \u000314| \u000315";
 		}
+		public static string Icon(string icon)
+		{
+			return "\u0002\u000300" + icon + "\u000f";
+		}
 	}
 	public class PluginHelp
 	{
