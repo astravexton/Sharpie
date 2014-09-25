@@ -7,4 +7,4 @@
 * **#hello** *HelloWorld*
   * Prints "Hello, World!" to IRC.
 * **#version** *Version*
-  * Prints **Sharpie** version, OS, and compiler (i.e. .NET or Mono).
+  * Prints *Sharpie* version, OS, and compiler (i.e. .NET or Mono).
