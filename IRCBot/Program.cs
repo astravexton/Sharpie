@@ -17,7 +17,7 @@ namespace IRCBot
 			var server = "irc.subluminal.net";
 			var port = 6667;
 			var nick = "Sharpie";
-			var channel = "#test";
+			var channel = "#programming";
 
 			Status.Welcome ();
 			Line.Single ();
@@ -102,12 +102,10 @@ namespace IRCBot
 
 							switch (cmd) {
 							case "#consay":
-								Status.Do ("Executing: 'Consay'");
 								Plugins.Consay.Main (host, chan, says, cmd, msg);
 								writer.Flush ();
 								break;
 							case "#hello":
-								Status.Do ("Executing: 'HelloWorld'");
 								Plugins.HelloWorld.Main (host, chan, says, cmd, msg);
 								writer.Flush ();
 								break;
@@ -116,17 +114,14 @@ namespace IRCBot
 								writer.Flush ();
 								break;
 							case "#np":
-								Status.Do ("Executing: 'LastFM'");
 								Plugins.LastFM.Main (host, chan, says, cmd, msg);
 								writer.Flush ();
 								break;
 							case "#version":
-								Status.Do ("Executing: 'Version'");
 								Plugins.Version.Main (host, chan, says, cmd, msg);
 								writer.Flush ();
 								break;
 							case "#view":
-								Status.Do ("Executing: 'RSXView'");
 								Plugins.RSXView.Main (host, chan, says, cmd, msg);
 								writer.Flush ();
 								break;
