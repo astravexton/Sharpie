@@ -49,6 +49,7 @@
     <Compile Include="Utilities.cs" />
     <Compile Include="Plugins\LastFM.cs" />
     <Compile Include="Plugins\RSXView.cs" />
+    <Compile Include="Plugins\Debug.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
