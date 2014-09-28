@@ -23,7 +23,7 @@ namespace IRCBot
 		{
 			Console.ForegroundColor = ConsoleColor.Black;
 			Console.BackgroundColor = ConsoleColor.Yellow;
-			Console.Write("Sharpie");
+			Console.Write("Sharpie [master/quack]");
 			Console.BackgroundColor = ConsoleColor.DarkGray;
 			Console.Write ("|");
 			Console.BackgroundColor = ConsoleColor.DarkYellow;

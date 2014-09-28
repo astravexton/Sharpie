@@ -14,10 +14,11 @@ namespace IRCBot
 		{
 			// Hardcoded Connection
 			var HardCodedConnection = false;
-			var server = "irc.subluminal.net";
+			var server = "subluminal.ducky.znc.rly.sx";
 			var port = 6667;
-			var nick = "Sharpie";
-			var channel = "#test";
+			var nick = "Ducky";
+			var channel = "#programming";
+			var pass = "i_forgot/to_set:my_password";
 
 			Status.Welcome ();
 			Line.Single ();
@@ -30,6 +31,8 @@ namespace IRCBot
 				nick = Console.ReadLine ();
 				Status.Input ("Channel: ");
 				channel = Console.ReadLine ();
+				Status.Input ("Pass:    ");
+				pass = Console.ReadLine ();
 			} else {
 				Status.OK ("Using hardcoded connection settings");
 			}
@@ -58,6 +61,11 @@ namespace IRCBot
 				Status.Do ("Setting Nick: '" + NICK + "'");
 				writer.WriteLine ("NICK " + NICK);
 				writer.Flush ();
+
+				// Password magic for ZNC
+				writer.WriteLine ("PASS " + pass);
+				writer.Flush();
+
 				writer.WriteLine (USER);
 				writer.Flush ();
 
@@ -104,32 +112,12 @@ namespace IRCBot
 							}
 
 							switch (cmd) {
-							case "#consay":
-								Plugins.Consay.Main (host, chan, says, cmd, msg);
-								writer.Flush ();
-								break;
 							case "#debug":
 								Plugins.Debug.Main (status, host, user, chan, says, cmd, msg);
 								writer.Flush ();
 								break;
-							case "#hello":
-								Plugins.HelloWorld.Main (host, chan, says, cmd, msg);
-								writer.Flush ();
-								break;
-							case "#join":
-								writer.WriteLine ("JOIN " + msg);
-								writer.Flush ();
-								break;
-							case "#np":
-								Plugins.LastFM.Main (host, chan, says, cmd, msg);
-								writer.Flush ();
-								break;
-							case "#version":
-								Plugins.Version.Main (host, chan, says, cmd, msg);
-								writer.Flush ();
-								break;
-							case "#view":
-								Plugins.RSXView.Main (host, chan, says, cmd, msg);
+							case "!quack":
+								Plugins.Quack.Main (host, user, chan, says, cmd, msg);
 								writer.Flush ();
 								break;
 							default:
