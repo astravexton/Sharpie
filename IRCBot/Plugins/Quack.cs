@@ -13,7 +13,7 @@ namespace IRCBot.Plugins
 			//var DuckySays = "segfaults";
 			var DuckySays = RandomSaying (user, chan);
 			Say.IRC (chan, "\u0001ACTION " + DuckySays + " \u0001");
-			if (DuckySays == "segfaults") {
+			if (DuckySays == "segfaults\x07") {
 				IRCBot.Sharpie.writer.WriteLine ("PART " + chan + " Something has gone horribly wrong here.");
 				IRCBot.Sharpie.writer.WriteLine ("JOIN " + chan);
 			}
@@ -25,6 +25,8 @@ namespace IRCBot.Plugins
 				"cuddlehumps " + user,
 				"dances with " + user,
 				"divebombs " + user,
+				"faps",
+				"flaps",
 				"flaps his wings at " + user,
 				"gropes " + user,
 				"jumps on top of " + user,
