@@ -193,7 +193,11 @@ namespace IRCBot
 										break;
 									case "#ducky":
 									case "#lucky":
-										Plugins.ZeroClick.Ducky();
+										Plugins.ZeroClick.Ducky(false);
+										writer.Flush();
+										break;
+									case "#find":
+										Plugins.ZeroClick.Ducky(true);
 										writer.Flush();
 										break;
 									case "#hello":
@@ -218,10 +222,14 @@ namespace IRCBot
 										Say.Console();
 										writer.Flush();
 										break;
+									case "#say":
+										Say.IRC(Global.IRCMessage);
+										writer.Flush();
+										break;
 									case "#stop":
 										if (Global.IRCMessage == Global.QuitKey)
 										{
-											Say.IRCMinor(Formatting.Icon("!") + "Bot is shutting down...");
+											Say.IRC(Formatting.Icon("!") + "Bot is shutting down...");
 											writer.WriteLine("AWAY Bot is offline");
 											Status.Error("Shutdown from IRC");
 											irc.Close();

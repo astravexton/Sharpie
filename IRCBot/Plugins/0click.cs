@@ -59,7 +59,7 @@ namespace IRCBot.Plugins
 			}
 		}
 
-		public static void Ducky()
+		public static void Ducky(bool showLink)
 		{
 			var search = new Search
 			{
