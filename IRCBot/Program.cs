@@ -16,7 +16,6 @@ namespace IRCBot
 		static void Main(string[] args)
 		{
 			Status.Welcome();
-			Line.Double();
 
 			Status.Input("Config: ");
 			var cfgPath = Console.ReadLine();
