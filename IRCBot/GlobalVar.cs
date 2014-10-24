@@ -17,7 +17,7 @@ public static class Global
 	public static String Master = "";
 }
 
-public static class SharpieConfig
+public static class Config
 {
 	public static String MainAppName = "";
 
@@ -28,4 +28,7 @@ public static class SharpieConfig
 	public static String Password = "";
 
 	public static String AdminAdminUser = "";
+
+	public static String LastFMKey = "";
+	public static String LastFMSecret = "";
 }

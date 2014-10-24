@@ -56,6 +56,7 @@ namespace IRCBot
 
 				Section cfgConnection = config["Connection"];
 				Section cfgAdmin = config["Admin"];
+				Section cfgLastFM = config["LastFM"];
 
 				server = cfgConnection["Server"].Value;
 				port = cfgConnection["Port"].GetValue<int>();
@@ -63,6 +64,9 @@ namespace IRCBot
 				channel = cfgConnection["Channel"].Value;
 				pass = cfgConnection["Password"].Value;
 				Global.Master = cfgAdmin["AdminUser"].Value;
+
+				Config.LastFMKey = cfgLastFM["Key"].Value;
+				Config.LastFMSecret = cfgLastFM["Secret"].Value;
 
 				Status.OK("Using '" + cfgPath + "' for settings");
 			}

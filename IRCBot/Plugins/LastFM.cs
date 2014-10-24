@@ -11,8 +11,8 @@ namespace IRCBot.Plugins
 	{
 		public static void Start()
 		{
-			string APIKey = "";
-			string APISecret = "";
+			string APIKey = Config.LastFMKey;
+			string APISecret = Config.LastFMSecret;
 			Session session = new Session(APIKey, APISecret);
 
 			var user = new User(Global.IRCMessage, session);
