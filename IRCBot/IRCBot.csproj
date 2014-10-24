@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalVar.cs" />
-    <Compile Include="Plugins\Consay.cs" />
     <Compile Include="Plugins\HelloWorld.cs" />
     <Compile Include="Plugins\Version.cs" />
     <Compile Include="Program.cs" />

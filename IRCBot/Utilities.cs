@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace IRCBot
 {
-	public class Utilities
-	{
-
-	}
 	public class Say
 	{
 		public static void IRC(string text)
 		{
 			Sharpie.writer.WriteLine ("PRIVMSG " + Global.IRCChannel + " :" + Global.Says + text);
+		}
+		public static void Cmd(string text)
+		{
+			Sharpie.writer.WriteLine(text);
+		}
+		public static void Console()
+		{
+			Status.Error(Global.IRCMessage);
 		}
 	}
 	public class Status

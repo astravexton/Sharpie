@@ -134,20 +134,13 @@ namespace IRCBot
 
 								switch (Global.IRCCommand)
 								{
-									case "#consay":
-										Plugins.Consay.Start();
-										writer.Flush();
-										break;
+									// self-contained
 									case "#debug":
 										Plugins.Debug.Start();
 										writer.Flush();
 										break;
 									case "#hello":
 										Plugins.HelloWorld.Start();
-										writer.Flush();
-										break;
-									case "#join":
-										writer.WriteLine("JOIN " + msg);
 										writer.Flush();
 										break;
 									case "#np":
@@ -162,6 +155,20 @@ namespace IRCBot
 										Plugins.RSXView.Start();
 										writer.Flush();
 										break;
+
+									// one-liners
+									case "#consay":
+										Say.Console();
+										writer.Flush();
+										break;
+
+									// IRC commands
+									case "#join":
+										writer.WriteLine("JOIN " + msg);
+										writer.Flush();
+										break;
+									
+									// Keep on truckin'
 									default:
 										break;
 								}
