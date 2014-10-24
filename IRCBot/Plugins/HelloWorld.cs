@@ -8,9 +8,9 @@ namespace IRCBot.Plugins
 {
 	class HelloWorld
 	{
-		public static void Main(string host, string chan, string says, string cmd, string msg)
+		public static void Start()
 		{
-			Say.IRC(chan, says + "Hello, world!");
+			Say.IRC("Hello, world!");
 		}
 	}
 }

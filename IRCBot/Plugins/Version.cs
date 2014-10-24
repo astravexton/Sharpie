@@ -8,9 +8,9 @@ namespace IRCBot.Plugins
 {
 	class Version
 	{
-		public static void Main(string host, string chan, string says, string cmd, string msg)
+		public static void Start()
 		{
-			Say.IRC(chan, says + Formatting.Icon("Sharpie") + Formatting.Sep() + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + Formatting.Sep() + Environment.OSVersion + " (" + Environment.MachineName + ")" + Formatting.Sep() + IsThisMono());
+			Say.IRC(Formatting.Icon("Sharpie") + Formatting.Sep() + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + Formatting.Sep() + Environment.OSVersion + " (" + Environment.MachineName + ")" + Formatting.Sep() + IsThisMono());
 		}
 		public static string IsThisMono() {
 			Type t = Type.GetType ("Mono.Runtime");

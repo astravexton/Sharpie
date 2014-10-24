@@ -8,9 +8,9 @@ namespace IRCBot.Plugins
 {
 	class LastFM
 	{
-		public static void Main(string host, string chan, string says, string cmd, string msg)
+		public static void Start()
 		{
-			Say.IRC(chan, says + Formatting.Icon("\u266B") + Formatting.Sep() + "Artist - Title");
+			Say.IRC(Formatting.Icon("\u266B") + Formatting.Sep() + "Artist - Title");
 		}
 	}
 }

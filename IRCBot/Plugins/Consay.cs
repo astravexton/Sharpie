@@ -12,9 +12,9 @@ namespace IRCBot.Plugins
 		{
 			PluginHelp.Main("Consay", "", "Sends text to console Sharpie is attached to.");
 		}
-		public static void Main(string host, string chan, string says, string cmd, string msg)
+		public static void Start()
 		{
-			Status.Error(msg);
+			Status.Error(Global.IRCMessage);
 		}
 	}
 }

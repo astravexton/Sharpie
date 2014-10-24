@@ -8,9 +8,9 @@ namespace IRCBot.Plugins
 {
 	class RSXView
 	{
-		public static void Main(string host, string chan, string says, string cmd, string msg)
+		public static void Start()
 		{
-			Say.IRC(chan, says + "http://rly.sx/v/?" + msg);
+			Say.IRC("http://rly.sx/v/?" + Global.IRCMessage);
 		}
 	}
 }

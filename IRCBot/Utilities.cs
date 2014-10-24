@@ -12,21 +12,20 @@ namespace IRCBot
 	}
 	public class Say
 	{
-		public static void IRC(string chan, string text)
+		public static void IRC(string text)
 		{
-			Sharpie.writer.WriteLine ("PRIVMSG " + chan + " :" + text);
+			Sharpie.writer.WriteLine ("PRIVMSG " + Global.IRCChannel + " :" + Global.Says + text);
 		}
 	}
 	public class Status
 	{
 		public static void Welcome()
 		{
-			Console.ForegroundColor = ConsoleColor.Black;
-			Console.BackgroundColor = ConsoleColor.Yellow;
-			Console.Write("Sharpie");
-			Console.BackgroundColor = ConsoleColor.DarkGray;
-			Console.Write ("|");
-			Console.BackgroundColor = ConsoleColor.DarkYellow;
+			//Console.ForegroundColor = ConsoleColor.Black;
+			//Console.BackgroundColor = ConsoleColor.Yellow;
+			Console.Write("Sharpie | ");
+			//Console.ForegroundColor = ConsoleColor.White;
+			//Console.BackgroundColor = ConsoleColor.DarkGray;
 			Console.Write(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
 			Console.ResetColor();
 			Console.Write(Environment.NewLine);
