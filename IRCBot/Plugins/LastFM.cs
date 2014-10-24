@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lastfm.Services;
 
 namespace IRCBot.Plugins
 {
@@ -10,7 +11,23 @@ namespace IRCBot.Plugins
 	{
 		public static void Start()
 		{
-			Say.IRC(Formatting.Icon("\u266B") + Formatting.Sep() + "Artist - Title");
+			string APIKey = "";
+			string APISecret = "";
+			Session session = new Session(APIKey, APISecret);
+
+			var user = new User(Global.IRCMessage, session);
+
+			string NP = "";
+
+			try
+			{
+				NP = user.GetNowPlaying().ToString();
+				Say.IRCMinor(Formatting.Icon("\u266B") + Formatting.Sep() + NP);
+			}
+			catch
+			{
+				Say.IRCMinor(Formatting.Icon("\u266B") + Formatting.Sep() + Formatting.Minor() + "Nothing is playing :(");
+			}
 		}
 	}
 }

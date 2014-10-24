@@ -3,6 +3,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
+using System.Linq;
+using System.Diagnostics;
 
 namespace IRCBot
 {
@@ -16,8 +18,8 @@ namespace IRCBot
 			var HardCodedConnection = true;
 			var server = "irc.subluminal.net";
 			var port = 6667;
-			var nick = "Sharpie|debug";
-			var channel = "#test";
+			var nick = "Sharpie";
+			var channel = "#programming";
 			var pass = "";
 
 			Status.Welcome();
@@ -42,6 +44,12 @@ namespace IRCBot
 			Line.Double();
 
 			Status.Do("Initializing");
+
+			// Hold the fuck up, we're in a debugger
+			if (Debugger.IsAttached == true)
+			{
+				nick = nick + "|debug";
+			}
 
 			var SERVER = server;
 			var PORT = port;
@@ -126,6 +134,7 @@ namespace IRCBot
 									{
 										Global.IRCMessage += splitInput[i] + " ";
 									}
+									Global.IRCMessage = Global.IRCMessage.Remove(Global.IRCMessage.Length - 1);
 								}
 								catch
 								{
@@ -161,13 +170,23 @@ namespace IRCBot
 										Say.Console();
 										writer.Flush();
 										break;
+									case ".choose":
+										string choose = Global.IRCMessage;
+										string[] items = choose.Split(',');
+										string chosenItem = "";
+										int chosenItemInt = 0;
+										chosenItem = items[new Random().Next(0, items.Length)];
+										chosenItemInt = Convert.ToInt32(chosenItem);
+										Say.IRC((string)items[chosenItemInt]);
+										writer.Flush();
+										break;
 
 									// IRC commands
 									case "#join":
-										writer.WriteLine("JOIN " + msg);
+										writer.WriteLine("JOIN " + Global.IRCMessage);
 										writer.Flush();
 										break;
-									
+
 									// Keep on truckin'
 									default:
 										break;
@@ -193,12 +212,12 @@ namespace IRCBot
 			}
 			catch (Exception e)
 			{
-				// Show the exception, sleep for a while and try to establish a new connection to irc server
+				Say.IRC("Well shit, something broke.");
 				Status.Error("Oh noez! Something went wrong...");
 				Status.Error(e.ToString());
 				Thread.Sleep(5000);
 				string[] argv = { };
-				Main(argv);
+				//Main(argv);
 			}
 
 		}

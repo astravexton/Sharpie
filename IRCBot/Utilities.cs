@@ -6,11 +6,22 @@ using System.Threading.Tasks;
 
 namespace IRCBot
 {
+	public class Perms
+	{
+		public static void RequireToRun(string user)
+		{
+
+		}
+	}
 	public class Say
 	{
 		public static void IRC(string text)
 		{
 			Sharpie.writer.WriteLine ("PRIVMSG " + Global.IRCChannel + " :" + Global.Says + text);
+		}
+		public static void IRCMinor(string text)
+		{
+			Sharpie.writer.WriteLine("PRIVMSG " + Global.IRCChannel + " :" + Global.Says + "\u000314" + text);
 		}
 		public static void Cmd(string text)
 		{
@@ -100,11 +111,15 @@ namespace IRCBot
 	{
 		public static string Sep()
 		{
-			return " \u000314| \u000315";
+			return " \u000314| \u000f";
 		}
 		public static string Icon(string icon)
 		{
 			return "\u0002\u000300" + icon + "\u000f";
+		}
+		public static string Minor()
+		{
+			return "\u000314";
 		}
 	}
 	public class PluginHelp
