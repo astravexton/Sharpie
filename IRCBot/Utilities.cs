@@ -92,6 +92,11 @@ namespace IRCBot
 			Console.ResetColor();
 			Console.Write(input + Environment.NewLine);
 		}
+		public static void NewLine(string input)
+		{
+			Console.Write("  ");
+			Console.Write(input + Environment.NewLine);
+		}
 	}
 	public class Line
 	{

@@ -21,6 +21,7 @@ namespace IRCBot
 			var nick = "Sharpie";
 			var channel = "#test";
 			var pass = "";
+			Global.Master = "Ducky";
 
 			Status.Welcome();
 			Line.Single();
@@ -36,6 +37,8 @@ namespace IRCBot
 				channel = Console.ReadLine();
 				Status.Input("Pass:    ");
 				pass = Console.ReadLine();
+				Status.Input("Admin:   ");
+				Global.Master = Console.ReadLine();
 			}
 			else
 			{
@@ -52,7 +55,9 @@ namespace IRCBot
 			}
 
 			Global.QuitKey = MiscUtils.GetRandomString();
-			Status.Error("To quit Sharpie from IRC, do '#quit " + Global.QuitKey + "'");
+			Status.Error("To quit Sharpie from IRC...");
+			Status.NewLine(" - Do '#quit " + Global.QuitKey + "'");
+			Status.NewLine(" - Exit as '" + Global.Master + "'");
 
 			var SERVER = server;
 			var PORT = port;
@@ -174,10 +179,6 @@ namespace IRCBot
 										Plugins.LastFM.Start();
 										writer.Flush();
 										break;
-									case "#stop":
-										Plugins.LastFM.Start();
-										writer.Flush();
-										break;
 									case "#version":
 										Plugins.Version.Start();
 										writer.Flush();
@@ -192,7 +193,7 @@ namespace IRCBot
 										Say.Console();
 										writer.Flush();
 										break;
-									case "#quit":
+									case "#stop":
 										if (Global.IRCMessage == Global.QuitKey)
 										{
 											// Close all streams

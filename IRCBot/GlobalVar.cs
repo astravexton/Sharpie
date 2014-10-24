@@ -14,4 +14,5 @@ public static class Global
 	public static String IRCMessage = "";
 	public static String Says = "";
 	public static String QuitKey = "";
+	public static String Master = "";
 }
