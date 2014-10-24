@@ -188,6 +188,7 @@ namespace IRCBot
 										writer.Flush();
 										break;
 									case "#debug":
+									case "#info":
 										Plugins.Debug.Start();
 										writer.Flush();
 										break;
@@ -208,6 +209,7 @@ namespace IRCBot
 										Plugins.LastFM.Start();
 										writer.Flush();
 										break;
+									case "#ver":
 									case "#version":
 										Plugins.Version.Start();
 										writer.Flush();
