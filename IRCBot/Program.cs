@@ -19,7 +19,7 @@ namespace IRCBot
 			var server = "irc.subluminal.net";
 			var port = 6667;
 			var nick = "Sharpie";
-			var channel = "#programming";
+			var channel = "#test";
 			var pass = "";
 
 			Status.Welcome();
@@ -45,10 +45,10 @@ namespace IRCBot
 
 			Status.Do("Initializing");
 
-			// Hold the fuck up, we're in a debugger
 			if (Debugger.IsAttached == true)
 			{
 				nick = nick + "|debug";
+				Status.Error("Debugging");
 			}
 
 			var SERVER = server;

@@ -12,7 +12,7 @@ namespace IRCBot.Plugins
 		{
 			switch (Global.IRCMessage)
 			{
-				case "os ":
+				case "os":
 					OS();
 					break;
 				default:
