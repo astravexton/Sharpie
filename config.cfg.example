@@ -2,14 +2,14 @@
 AppName = Sharpie
 
 [Connection]
-Server = irc.subluminal.net
+Server = irc.hostname.tld
 Port = 6667
 Nick = Sharpie
 Channel = test
 Password = 
 
 [Admin]
-AdminUser = Ducky
+AdminUser = Me
 
 [LastFM]
 Key = 
