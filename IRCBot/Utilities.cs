@@ -112,6 +112,10 @@ namespace IRCBot
 			Console.WriteLine("===");
 			Console.ResetColor();
 		}
+		public static void Blank()
+		{
+			Console.WriteLine(" ");
+		}
 	}
 	public class Formatting
 	{

@@ -16,3 +16,16 @@ public static class Global
 	public static String QuitKey = "";
 	public static String Master = "";
 }
+
+public static class SharpieConfig
+{
+	public static String MainAppName = "";
+
+	public static String ConnectionServer = "";
+	public static Int32 ConnectionPort = 0;
+	public static String ConnectionNick = "";
+	public static String ConnectionChannel = "";
+	public static String Password = "";
+
+	public static String AdminAdminUser = "";
+}

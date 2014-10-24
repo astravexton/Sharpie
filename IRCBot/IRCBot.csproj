@@ -45,6 +45,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\DuckDuckGo.Net.1.0.1\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SharpConfig">
+      <HintPath>..\..\..\..\..\tmp\SharpConfig.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />

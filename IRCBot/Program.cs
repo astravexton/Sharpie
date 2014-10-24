@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Linq;
 using System.Diagnostics;
+using SharpConfig;
 
 namespace IRCBot
 {
@@ -14,57 +15,77 @@ namespace IRCBot
 
 		static void Main(string[] args)
 		{
-			// Hardcoded Connection
-			var HardCodedConnection = true;
-			var server = "irc.subluminal.net";
-			var port = 6667;
-			var nick = "Sharpie";
-			var channel = "#test";
-			var pass = "";
-			Global.Master = "Ducky";
-
 			Status.Welcome();
-			Line.Single();
-			if (HardCodedConnection == false)
+			Line.Double();
+
+			Status.Input("Config: ");
+			var cfgPath = Console.ReadLine();
+
+			// TODO: Swap these for global variables
+			var server = "";
+			int port = 0;
+			var nick = "";
+			var channel = "";
+			var pass = "";
+			Global.Master = "";
+
+			if (string.IsNullOrEmpty(cfgPath))
 			{
-				Status.Input("Server:  ");
+				Line.Blank();
+				Status.OK("Not using configuration file for config");
+				Status.NewLine("Please enter config manually");
+				Line.Blank();
+				Status.NewLine("Connection");
+				Status.Input("Server:   ");
 				server = Console.ReadLine();
-				Status.Input("Port:    ");
+				Status.Input("Port:     ");
 				port = Convert.ToInt32(Console.ReadLine());
-				Status.Input("Nick:    ");
+				Status.Input("Nick:     ");
 				nick = Console.ReadLine();
-				Status.Input("Channel: ");
+				Status.Input("Channel:  ");
 				channel = Console.ReadLine();
-				Status.Input("Pass:    ");
+				Status.Input("Pass:     ");
 				pass = Console.ReadLine();
-				Status.Input("Admin:   ");
+				Status.NewLine("Admin");
+				Status.Input("Admin:    ");
 				Global.Master = Console.ReadLine();
 			}
 			else
 			{
-				Status.OK("Using hardcoded connection settings");
+				Configuration config = Configuration.LoadFromFile(@cfgPath);
+
+				Section cfgConnection = config["Connection"];
+				Section cfgAdmin = config["Admin"];
+
+				server = cfgConnection["Server"].Value;
+				port = cfgConnection["Port"].GetValue<int>();
+				nick = cfgConnection["Nick"].Value;
+				channel = cfgConnection["Channel"].Value;
+				pass = cfgConnection["Password"].Value;
+				Global.Master = cfgAdmin["AdminUser"].Value;
+
+				Status.OK("Using '" + cfgPath + "' for settings");
 			}
-			Line.Double();
+			Line.Single();
 
 			Status.Do("Initializing");
 
 			if (Debugger.IsAttached == true)
 			{
-				nick = nick + "|debug";
 				Status.Error("Debugging");
 			}
 
 			Global.QuitKey = MiscUtils.GetRandomString();
 			Status.Error("To quit Sharpie from IRC...");
 			Status.NewLine(" - Do '#quit " + Global.QuitKey + "'");
-			Status.NewLine(" - Exit as '" + Global.Master + "'");
+			//Status.NewLine(" - Exit as '" + Global.Master + "'");
 
 			var SERVER = server;
 			var PORT = port;
 			var PORTToString = port.ToString();
 			var USER = "USER Sharpie 0 * :Sharpie";
 			var NICK = nick;
-			var CHANNEL = channel;
+			var CHANNEL = "#" + channel;
 
 			NetworkStream stream;
 			TcpClient irc;
@@ -196,11 +217,17 @@ namespace IRCBot
 									case "#stop":
 										if (Global.IRCMessage == Global.QuitKey)
 										{
-											// Close all streams
+											Say.IRCMinor(Formatting.Icon("!") + "Bot is shutting down...");
 											writer.WriteLine("AWAY Bot is offline");
 											Status.Error("Shutdown from IRC");
 											irc.Close();
 											System.Environment.Exit(1);
+										}
+										else if (Global.IRCMessage == "key")
+										{
+											Status.Error("Quit key: " + Global.QuitKey);
+											writer.Flush();
+											break;
 										}
 										break;
 									//case ".choose":
@@ -243,7 +270,7 @@ namespace IRCBot
 			{
 				Status.Error("CRASH D:");
 				Status.Error(e.ToString());
-				Thread.Sleep(5000);
+				Thread.Sleep(50000);
 				string[] argv = { };
 				//Main(argv);
 			}
