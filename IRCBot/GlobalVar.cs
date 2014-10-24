@@ -13,4 +13,5 @@ public static class Global
 	public static String IRCCommand = "";
 	public static String IRCMessage = "";
 	public static String Says = "";
+	public static String QuitKey = "";
 }

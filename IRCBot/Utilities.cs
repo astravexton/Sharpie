@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace IRCBot
 {
@@ -134,6 +135,15 @@ namespace IRCBot
 			{
 				Sharpie.writer.WriteLine(name + " (v" + version + ")" + " | " + desc);
 			}
+		}
+	}
+	public class MiscUtils
+	{
+		public static string GetRandomString()
+		{
+			string path = Path.GetRandomFileName();
+			path = path.Replace(".", ""); // Remove period.
+			return path;
 		}
 	}
 }

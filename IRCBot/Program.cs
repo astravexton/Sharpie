@@ -51,6 +51,9 @@ namespace IRCBot
 				Status.Error("Debugging");
 			}
 
+			Global.QuitKey = MiscUtils.GetRandomString();
+			Status.Error("To quit Sharpie from IRC, do '#quit " + Global.QuitKey + "'");
+
 			var SERVER = server;
 			var PORT = port;
 			var PORTToString = port.ToString();
@@ -109,6 +112,8 @@ namespace IRCBot
 								Status.Do("Joining Channel: '" + CHANNEL + "'");
 								writer.WriteLine(JoinString);
 								writer.Flush();
+								writer.WriteLine("AWAY");
+								writer.Flush();
 								break;
 							case "PRIVMSG":
 								Global.IRCStatus = splitInput[1];
@@ -144,8 +149,21 @@ namespace IRCBot
 								switch (Global.IRCCommand)
 								{
 									// self-contained
+									case "#0":
+									case "#0click":
+									case "#ddg":
+									case "#duckduckgo":
+									case "#zero":
+										Plugins.ZeroClick.Start();
+										writer.Flush();
+										break;
 									case "#debug":
 										Plugins.Debug.Start();
+										writer.Flush();
+										break;
+									case "#ducky":
+									case "#lucky":
+										Plugins.ZeroClick.Ducky();
 										writer.Flush();
 										break;
 									case "#hello":
@@ -153,6 +171,10 @@ namespace IRCBot
 										writer.Flush();
 										break;
 									case "#np":
+										Plugins.LastFM.Start();
+										writer.Flush();
+										break;
+									case "#stop":
 										Plugins.LastFM.Start();
 										writer.Flush();
 										break;
@@ -170,16 +192,26 @@ namespace IRCBot
 										Say.Console();
 										writer.Flush();
 										break;
-									case ".choose":
-										string choose = Global.IRCMessage;
-										string[] items = choose.Split(',');
-										string chosenItem = "";
-										int chosenItemInt = 0;
-										chosenItem = items[new Random().Next(0, items.Length)];
-										chosenItemInt = Convert.ToInt32(chosenItem);
-										Say.IRC((string)items[chosenItemInt]);
-										writer.Flush();
+									case "#quit":
+										if (Global.IRCMessage == Global.QuitKey)
+										{
+											// Close all streams
+											writer.WriteLine("AWAY Bot is offline");
+											Status.Error("Shutdown from IRC");
+											irc.Close();
+											System.Environment.Exit(1);
+										}
 										break;
+									//case ".choose":
+									//	string choose = Global.IRCMessage;
+									//	string[] items = choose.Split(',');
+									//	string chosenItem = "";
+									//	int chosenItemInt = 0;
+									//	chosenItem = items[new Random().Next(0, items.Length)];
+									//	chosenItemInt = Convert.ToInt32(chosenItem);
+									//	Say.IRC((string)items[chosenItemInt]);
+									//	writer.Flush();
+									//	break;
 
 									// IRC commands
 									case "#join":
@@ -203,17 +235,12 @@ namespace IRCBot
 					Status.Error("Shutdown");
 					writer.Close();
 					reader.Close();
-					Status.OK("Close Stream Reader/Writer");
 					irc.Close();
-					Status.OK("Close IRC connection");
-					Status.OK("Bye bye!");
-
 				}
 			}
 			catch (Exception e)
 			{
-				Say.IRC("Well shit, something broke.");
-				Status.Error("Oh noez! Something went wrong...");
+				Status.Error("CRASH D:");
 				Status.Error(e.ToString());
 				Thread.Sleep(5000);
 				string[] argv = { };
