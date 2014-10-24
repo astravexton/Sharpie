@@ -50,9 +50,8 @@
     <Reference Include="DuckDuckGo">
       <HintPath>..\packages\DuckDuckGo.Net.1.0.1\lib\DuckDuckGo.dll</HintPath>
     </Reference>
-    <Reference Include="lastfm-sharp, Version=0.1.10.39897, Culture=neutral, PublicKeyToken=ac974b34236b3339, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\tmp\lastfm-sharp-0.1.10-bin\lastfm-sharp.dll</HintPath>
+    <Reference Include="LastFMSharp-0.1.10.39897">
+      <HintPath>..\packages\LastFMSharp-0.1.10.39897.dll</HintPath>
     </Reference>
     <Reference Include="Lpfm.LastFmScrobbler">
       <HintPath>..\packages\Lpfm.LastFmScrobbler.dll.1.3.0\lib\net40\Lpfm.LastFmScrobbler.dll</HintPath>
@@ -60,8 +59,8 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\DuckDuckGo.Net.1.0.1\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SharpConfig">
-      <HintPath>..\..\..\..\..\tmp\SharpConfig.dll</HintPath>
+    <Reference Include="SharpConfig-1.4">
+      <HintPath>..\packages\SharpConfig-1.4.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
