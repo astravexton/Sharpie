@@ -1,0 +1,16 @@
+[Main]
+AppName = Sharpie
+
+[Connection]
+Server = irc.subluminal.net
+Port = 6667
+Nick = Sharpie
+Channel = test
+Password = 
+
+[Admin]
+AdminUser = Ducky
+
+[LastFM]
+Key = 
+Secret = 
