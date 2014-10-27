@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public static class Global
 {
+	public static String Version = "";
 	public static String IRCStatus = "";
 	public static String IRCHost = "";
 	public static String IRCUser = "";

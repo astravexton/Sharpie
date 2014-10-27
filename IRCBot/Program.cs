@@ -17,6 +17,12 @@ namespace IRCBot
 		{
 			Status.Welcome();
 
+			if (Debugger.IsAttached == true)
+			{
+				Status.Error("Debugging");
+				Line.Blank();
+			}
+
 			Status.Input("Config: ");
 			var cfgPath = Console.ReadLine();
 
@@ -69,14 +75,11 @@ namespace IRCBot
 
 				Status.OK("Using '" + cfgPath + "' for settings");
 			}
-			Line.Single();
+			Line.Blank();
+			Line.Double();
+			Line.Blank();
 
 			Status.Do("Initializing");
-
-			if (Debugger.IsAttached == true)
-			{
-				Status.Error("Debugging");
-			}
 
 			Global.QuitKey = MiscUtils.GetRandomString();
 			Status.Error("To quit Sharpie from IRC...");
@@ -94,6 +97,8 @@ namespace IRCBot
 			TcpClient irc;
 			string inputLine;
 			StreamReader reader;
+
+			Console.Title = server + " | Sharpie";
 
 			try
 			{
