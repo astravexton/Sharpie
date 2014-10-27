@@ -23,7 +23,11 @@ namespace IRCBot
 
 	public static class Stream
 	{
-		public static System.IO.StreamWriter Writer;
+		public static class IRC
+		{
+			public static System.IO.StreamWriter Writer;
+			public static System.IO.StreamReader Reader;
+		}
 	}
 
 	public static class Config
