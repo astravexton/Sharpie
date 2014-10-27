@@ -113,6 +113,7 @@ namespace IRCBot
 				stream = irc.GetStream();
 				reader = new StreamReader(stream);
 				writer = new StreamWriter(stream);
+				Stream.Writer = writer;
 				Status.Do("Setting Nick: '" + NICK + "'");
 				writer.WriteLine("NICK " + NICK);
 				writer.Flush();
