@@ -42,6 +42,10 @@ namespace IRCBot
 
 		public static String AdminAdminUser = "";
 
+		public static Int32 SSHLocalPort = 0;
+		public static String SSHLocalUser = "";
+		public static String SSHLocalPass = "";
+
 		public static String LastFMKey = "";
 		public static String LastFMSecret = "";
 	}

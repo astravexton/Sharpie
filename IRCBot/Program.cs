@@ -8,6 +8,7 @@ using System.Threading;
 using System.Linq;
 using System.Diagnostics;
 using SharpConfig;
+using System.Threading.Tasks;
 
 namespace IRCBot
 {
@@ -63,6 +64,7 @@ namespace IRCBot
 
 				Section cfgConnection = config["Connection"];
 				Section cfgAdmin = config["Admin"];
+				Section cfgSSHLocal = config["SSHLocal"];
 				Section cfgLastFM = config["LastFM"];
 
 				server = cfgConnection["Server"].Value;
@@ -71,6 +73,10 @@ namespace IRCBot
 				channel = cfgConnection["Channel"].Value;
 				pass = cfgConnection["Password"].Value;
 				Global.Master = cfgAdmin["AdminUser"].Value;
+
+				Config.SSHLocalPort = cfgSSHLocal["Port"].GetValue<int>();
+				Config.SSHLocalUser = cfgSSHLocal["User"].Value;
+				Config.SSHLocalPass = cfgSSHLocal["Pass"].Value;
 
 				Config.LastFMKey = cfgLastFM["Key"].Value;
 				Config.LastFMSecret = cfgLastFM["Secret"].Value;
@@ -219,6 +225,10 @@ namespace IRCBot
 										break;
 									case "#np":
 										Plugins.LastFM.Start();
+										writer.Flush();
+										break;
+									case "#sh":
+										Plugins.SSH.Local();
 										writer.Flush();
 										break;
 									case "#ver":

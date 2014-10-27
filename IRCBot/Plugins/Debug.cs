@@ -29,7 +29,7 @@ namespace IRCBot.Plugins
 		}
 		public static void OS()
 		{
-			Say.IRC("OS: " + Environment.OSVersion + " @ " + Environment.MachineName);
+			Say.IRC(Environment.OSVersion + " @ " + Environment.MachineName);
 		}
 	}
 }
