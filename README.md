@@ -1,5 +1,5 @@
 # Sharpie
-*Sharpie* is **a IRC Bot built in C#**, compatible with both .NET and Mono.
+*Sharpie* is **an IRC Bot built in C#**, compatible with both .NET and Mono.
   
 ## License
 MIT License -- http://ducky.mit-license.org/
