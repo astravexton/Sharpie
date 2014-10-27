@@ -83,7 +83,7 @@ namespace IRCBot
 
 			Global.QuitKey = MiscUtils.GetRandomString();
 			Status.Error("To quit Sharpie from IRC...");
-			Status.NewLine(" - Do '#quit " + Global.QuitKey + "'");
+			Status.NewLine(" - Do '#stop " + Global.QuitKey + "'");
 			//Status.NewLine(" - Exit as '" + Global.Master + "'");
 
 			var SERVER = server;
