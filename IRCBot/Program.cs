@@ -196,7 +196,7 @@ namespace IRCBot
 									case "#zero":
 										Plugins.ZeroClick.Start();
 										writer.Flush();
-										break;
+										break;		
 									case "#debug":
 									case "#info":
 										Plugins.Debug.Start();
@@ -232,6 +232,11 @@ namespace IRCBot
 									// one-liners
 									case "#consay":
 										Say.Console();
+										writer.Flush();
+										break;
+									case "#raw":
+										//writer.WriteLine("PRIVMSG #programming it werks");
+										writer.WriteLine(Global.IRCMessage);
 										writer.Flush();
 										break;
 									case "#say":
