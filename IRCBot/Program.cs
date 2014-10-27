@@ -42,6 +42,7 @@ namespace IRCBot
 				Line.Blank();
 				Status.OK("Not using configuration file for config (boo!)");
 				Status.NewLine("Please enter config manually");
+				Status.NewLine("This is a pretty bad idea and something will break");
 				Line.Blank();
 				Status.NewLine("Connection");
 				Status.Input("Server:   ");
