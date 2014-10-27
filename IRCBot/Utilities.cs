@@ -152,6 +152,103 @@ namespace IRCBot
 		{
 			return "\u000314";
 		}
+		public class IRC
+		{
+			public static string Space()
+			{
+				return " ";
+			}
+			public static string Reset()
+			{
+				return "\u000f";
+			}
+			public class Colors
+			{
+				public static string White()
+				{
+					return "\u000300";
+				}
+				public static string Black()
+				{
+					return "\u000301";
+				}
+				public static string Blue()
+				{
+					return "\u000302";
+				}
+				public static string Green()
+				{
+					return "\u000303";
+				}
+				public static string Red()
+				{
+					return "\u000304";
+				}
+				public static string Brown()
+				{
+					return "\u000305";
+				}
+				public static string Purple()
+				{
+					return "\u000306";
+				}
+				public static string Orange()
+				{
+					return "\u000307";
+				}
+				public static string Yellow()
+				{
+					return "\u000308";
+				}
+				public static string Lime()
+				{
+					return "\u000309";
+				}
+				public static string Teal()
+				{
+					return "\u000310";
+				}
+				public static string Aqua()
+				{
+					return "\u000311";
+				}
+				public static string Royal()
+				{
+					return "\u000312";
+				}
+				public static string Fuchsia()
+				{
+					return "\u000313";
+				}
+				public static string Grey()
+				{
+					return "\u000314";
+				}
+				public static string Silver()
+				{
+					return "\u000315";
+				}
+			}
+			public class Style
+			{
+				public static string Bold()
+				{
+					return "\u0002";
+				}
+				public static string Italic()
+				{
+					return "\u001D";
+				}
+				public static string Underline()
+				{
+					return "\u001F";
+				}
+			}
+			public static string Reverse()
+			{
+				return "\u0016";
+			}
+		}
 	}
 	public class PluginHelp
 	{
