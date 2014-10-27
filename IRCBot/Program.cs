@@ -91,7 +91,11 @@ namespace IRCBot
 			var PORTToString = port.ToString();
 			var USER = "USER Sharpie 0 * :Sharpie";
 			var NICK = nick;
-			var CHANNEL = "#" + channel;
+			var CHANNEL = "";
+			if (!string.IsNullOrEmpty(channel))
+			{
+				CHANNEL = "#" + channel;
+			}
 
 			NetworkStream stream;
 			TcpClient irc;
