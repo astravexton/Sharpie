@@ -31,7 +31,7 @@ namespace IRCBot
 			if (string.IsNullOrEmpty(cfgPath))
 			{
 				Line.Blank();
-				Status.OK("Not using configuration file for config");
+				Status.OK("Not using configuration file for config (boo!)");
 				Status.NewLine("Please enter config manually");
 				Line.Blank();
 				Status.NewLine("Connection");
