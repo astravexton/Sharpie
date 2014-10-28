@@ -228,6 +228,11 @@ namespace IRCBot
 										Plugins.LastFM.Start();
 										writer.Flush();
 										break;
+									case "#quack":
+									case "!quack":
+										Plugins.Quack.Start();
+										writer.Flush();
+										break;
 									case "#sh":
 										Plugins.SSH.Local();
 										writer.Flush();
