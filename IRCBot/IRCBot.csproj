@@ -80,16 +80,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalVar.cs" />
-    <Compile Include="Plugins\0click.cs" />
-    <Compile Include="Plugins\HelloWorld.cs" />
     <Compile Include="Plugins\Quack.cs" />
-    <Compile Include="Plugins\SSH.cs" />
     <Compile Include="Plugins\Version.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
-    <Compile Include="Plugins\LastFM.cs" />
-    <Compile Include="Plugins\RSXView.cs" />
     <Compile Include="Plugins\Debug.cs" />
   </ItemGroup>
   <ItemGroup>
