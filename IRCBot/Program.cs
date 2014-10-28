@@ -58,7 +58,6 @@ namespace IRCBot
 				channel = Console.ReadLine();
 				Status.Input("Pass:     ");
 				pass = Console.ReadLine();
-				Status.NewLine("Admin");
 				Status.Input("Admin:    ");
 				Global.Master = Console.ReadLine();
 			}
