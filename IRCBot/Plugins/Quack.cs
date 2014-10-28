@@ -8,14 +8,15 @@ namespace IRCBot.Plugins
 {
 	class Quack
 	{
-		public static void Main(string host, string user, string chan, string says, string cmd, string msg)
+		public static void Start()
 		{
-			//var DuckySays = "segfaults";
-			var DuckySays = RandomSaying (user, chan);
-			Say.IRC (chan, "\u0001ACTION " + DuckySays + " \u0001");
-			if (DuckySays == "segfaults\x07") {
-				IRCBot.Sharpie.writer.WriteLine ("PART " + chan + " Something has gone horribly wrong here.");
-				IRCBot.Sharpie.writer.WriteLine ("JOIN " + chan);
+			Say.IRC("Hello, world!");
+			var DuckySays = RandomSaying(Global.IRCUser, Global.IRCChannel);
+			Say.IRC("\u0001ACTION " + DuckySays + " \u0001");
+			if (DuckySays == "segfaults\x07")
+			{
+				IRCBot.Sharpie.writer.WriteLine("PART " + Global.IRCChannel + " Something has gone horribly wrong here.");
+				IRCBot.Sharpie.writer.WriteLine("JOIN " + Global.IRCChannel);
 			}
 		}
 		public static string RandomSaying(string user, string chan)
@@ -35,7 +36,6 @@ namespace IRCBot.Plugins
 				"noms on bread",
 				"om nom noms",
 				"poops on " + user + "'s head",
-				"prods " + "Karkat",
 
 				// ugly way of making sure this happens most of the time
 				"quacks", "quacks", "quacks", "quacks", "quacks",
@@ -52,7 +52,7 @@ namespace IRCBot.Plugins
 				"throws bread at " + user,
 				"tickles " + user
 			};
-			return sayings[new Random().Next(0,sayings.Length) ] ;
+			return sayings[new Random().Next(0, sayings.Length)];
 		}
 	}
 }

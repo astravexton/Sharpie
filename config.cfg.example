@@ -1,0 +1,16 @@
+[Main]
+AppName = Sharpie
+
+[Connection]
+Server = irc.hostname.tld
+Port = 6667
+Nick = Sharpie
+Channel = test
+Password = 
+
+[Admin]
+AdminUser = Me
+
+[LastFM]
+Key = 
+Secret = 

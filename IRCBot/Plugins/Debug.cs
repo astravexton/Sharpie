@@ -8,11 +8,28 @@ namespace IRCBot.Plugins
 {
 	class Debug
 	{
-		public static void Main(string status, string host, string user, string chan, string says, string cmd, string msg)
+		public static void Start()
 		{
-			Plugins.Version.Main (host, chan, says, cmd, msg);
-			Say.IRC(chan, says + "Host: " + host + Formatting.Sep() + "User: " + user + Formatting.Sep() + "Channel: " + chan + Formatting.Sep() + "Says: " + says + Formatting.Sep() + "Cmd: " + cmd + Formatting.Sep() + "Type: " + status);
-			Say.IRC(chan, says + "Msg: " + msg);
+			switch (Global.IRCMessage)
+			{
+				case "os":
+					OS();
+					break;
+				default:
+					FullMonty();
+					break;
+			}
+		}
+
+		public static void FullMonty()
+		{
+			Plugins.Version.Start();
+			Say.IRC("Host: " + Global.IRCHost + Formatting.Sep() + "User: " + Global.IRCUser + Formatting.Sep() + "Channel: " + Global.IRCChannel + Formatting.Sep() + "Says: " + Global.Says + Formatting.Sep() + "Cmd: " + Global.IRCCommand + Formatting.Sep() + "Type: " + Global.IRCStatus);
+			Say.IRC("Msg: " + Global.IRCMessage);
+		}
+		public static void OS()
+		{
+			Say.IRC(Environment.OSVersion + " @ " + Environment.MachineName);
 		}
 	}
 }
