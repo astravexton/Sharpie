@@ -60,9 +60,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\DuckDuckGo.Net.1.0.1\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Renci.SshNet">
-      <HintPath>..\packages\SSH.NET.2013.4.7\lib\net40\Renci.SshNet.dll</HintPath>
-    </Reference>
     <Reference Include="SharpConfig, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SharpConfig.dll</HintPath>
@@ -80,8 +77,9 @@
   <ItemGroup>
     <Compile Include="GlobalVar.cs" />
     <Compile Include="Plugins\0click.cs" />
-    <Compile Include="Plugins\SSH.cs" />
     <Compile Include="Plugins\HelloWorld.cs" />
+    <Compile Include="Plugins\Quack.cs" />
+    <Compile Include="Plugins\SSH.cs" />
     <Compile Include="Plugins\Version.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
