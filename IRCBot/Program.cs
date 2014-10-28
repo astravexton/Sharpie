@@ -20,6 +20,9 @@ namespace IRCBot
 		{
 			Status.Welcome();
 
+			Status.OK("Quack quack motherfuckers");
+			Line.Blank();
+
 			if (Debugger.IsAttached == true)
 			{
 				Status.Error("Debugging");
@@ -75,12 +78,12 @@ namespace IRCBot
 				pass = cfgConnection["Password"].Value;
 				Global.Master = cfgAdmin["AdminUser"].Value;
 
-				Config.SSHLocalPort = cfgSSHLocal["Port"].GetValue<int>();
-				Config.SSHLocalUser = cfgSSHLocal["User"].Value;
-				Config.SSHLocalPass = cfgSSHLocal["Pass"].Value;
+				//Config.SSHLocalPort = cfgSSHLocal["Port"].GetValue<int>();
+				//Config.SSHLocalUser = cfgSSHLocal["User"].Value;
+				//Config.SSHLocalPass = cfgSSHLocal["Pass"].Value;
 
-				Config.LastFMKey = cfgLastFM["Key"].Value;
-				Config.LastFMSecret = cfgLastFM["Secret"].Value;
+				//Config.LastFMKey = cfgLastFM["Key"].Value;
+				//Config.LastFMSecret = cfgLastFM["Secret"].Value;
 
 				Status.OK("Using '" + cfgPath + "' for settings");
 			}
@@ -198,99 +201,14 @@ namespace IRCBot
 								switch (Global.IRCCommand)
 								{
 									// self-contained
-									case "#0":
-									case "#0click":
-									case "#ddg":
-									case "#duckduckgo":
-									case "#zero":
-										Plugins.ZeroClick.Start();
-										writer.Flush();
-										break;		
-									case "#debug":
-									case "#info":
+									case "!quack.debug":
+									case "#quack.debug":
 										Plugins.Debug.Start();
-										writer.Flush();
-										break;
-									case "#ducky":
-									case "#lucky":
-										Plugins.ZeroClick.Ducky(false);
-										writer.Flush();
-										break;
-									case "#find":
-										Plugins.ZeroClick.Ducky(true);
-										writer.Flush();
-										break;
-									case "#hello":
-										Plugins.HelloWorld.Start();
-										writer.Flush();
-										break;
-									case "#np":
-										Plugins.LastFM.Start();
 										writer.Flush();
 										break;
 									case "#quack":
 									case "!quack":
 										Plugins.Quack.Start();
-										writer.Flush();
-										break;
-									case "#sh":
-										Plugins.SSH.Local();
-										writer.Flush();
-										break;
-									case "#ver":
-									case "#version":
-										Plugins.Version.Start();
-										writer.Flush();
-										break;
-									case "#view":
-										Plugins.RSXView.Start();
-										writer.Flush();
-										break;
-
-									// one-liners
-									case "#consay":
-										Say.Console();
-										writer.Flush();
-										break;
-									case "#raw":
-										//writer.WriteLine("PRIVMSG #programming it werks");
-										writer.WriteLine(Global.IRCMessage);
-										writer.Flush();
-										break;
-									case "#say":
-										Say.IRC(Global.IRCMessage);
-										writer.Flush();
-										break;
-									case "#stop":
-										if (Global.IRCMessage == Global.QuitKey)
-										{
-											Say.IRC(Formatting.Icon("!") + "Bot is shutting down...");
-											writer.WriteLine("AWAY Bot is offline");
-											Status.Error("Shutdown from IRC");
-											irc.Close();
-											System.Environment.Exit(1);
-										}
-										else if (Global.IRCMessage == "key")
-										{
-											Status.Error("Quit key: " + Global.QuitKey);
-											writer.Flush();
-											break;
-										}
-										break;
-									//case ".choose":
-									//	string choose = Global.IRCMessage;
-									//	string[] items = choose.Split(',');
-									//	string chosenItem = "";
-									//	int chosenItemInt = 0;
-									//	chosenItem = items[new Random().Next(0, items.Length)];
-									//	chosenItemInt = Convert.ToInt32(chosenItem);
-									//	Say.IRC((string)items[chosenItemInt]);
-									//	writer.Flush();
-									//	break;
-
-									// IRC commands
-									case "#join":
-										writer.WriteLine("JOIN " + Global.IRCMessage);
 										writer.Flush();
 										break;
 
