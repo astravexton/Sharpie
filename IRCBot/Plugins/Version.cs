@@ -11,7 +11,7 @@ namespace IRCBot.Plugins
 	{
 		public static void Start()
 		{
-			Say.IRC(Formatting.Icon("Sharpie") + Formatting.Sep() + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + Formatting.Sep() + Environment.OSVersion + " (" + Environment.MachineName + ")" + Formatting.Sep() + IsThisMono() + Debug());
+			Say.IRC(Formatting.Icon("Sharpie [tree/quack]") + Formatting.Sep() + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + Formatting.Sep() + Environment.OSVersion + " (" + Environment.MachineName + ")" + Formatting.Sep() + IsThisMono() + Debug());
 		}
 		public static string IsThisMono()
 		{
