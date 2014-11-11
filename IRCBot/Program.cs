@@ -40,23 +40,7 @@ namespace IRCBot
 			if (string.IsNullOrEmpty(cfgPath))
 			{
 				Line.Blank();
-				Status.OK("Not using configuration file for config (boo!)");
-				Status.NewLine("Please enter config manually");
-				Status.NewLine("This is a pretty bad idea and something will break");
-				Line.Blank();
-				Status.NewLine("Connection");
-				Status.Input("Server:   ");
-				server = Console.ReadLine();
-				Status.Input("Port:     ");
-				port = Convert.ToInt32(Console.ReadLine());
-				Status.Input("Nick:     ");
-				nick = Console.ReadLine();
-				Status.Input("Channel:  ");
-				channel = Console.ReadLine();
-				Status.Input("Pass:     ");
-				pass = Console.ReadLine();
-				Status.Input("Admin:    ");
-				Global.Master = Console.ReadLine();
+                Status.Error("No config file supplied");
 			}
 			else
 			{
@@ -208,15 +192,6 @@ namespace IRCBot
 									case "#debug":
 									case "#info":
 										Plugins.Debug.Start();
-										writer.Flush();
-										break;
-									case "#ducky":
-									case "#lucky":
-										Plugins.ZeroClick.Ducky(false);
-										writer.Flush();
-										break;
-									case "#find":
-										Plugins.ZeroClick.Ducky(true);
 										writer.Flush();
 										break;
 									case "#hello":
