@@ -25,6 +25,11 @@ namespace IRCBot
 		{
 			Sharpie.writer.WriteLine("PRIVMSG " + Global.IRCChannel + " :" + Global.Says + "\u000314" + text);
 		}
+        public static void IRCError(string text)
+        {
+            Sharpie.writer.WriteLine("PRIVMSG " + Global.IRCChannel + " :" + Global.Says + Formatting.IRC.Colors.Red() + text);
+            Status.Error(text);
+        }
 		public static void Cmd(string text)
 		{
 			Sharpie.writer.WriteLine(text);
