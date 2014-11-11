@@ -24,13 +24,14 @@ using System.Runtime.InteropServices;
 
 // Version information for an assembly consists of the following four values:
 //
-//      Major Version   Major change to the architecture
-//      Minor Version   Add/Removed Plugin, fixes, small changes to architecture
-//      Build Number    Auto
-//      Revision        Auto
+//      Major Version   When you make incompatible API changes
+//      Minor Version   When you add functionality in a backwards-compatible manner
+//                      When you make backwards-compatible bug fixes
+//      Build Number    Auto - Number of days since January 1, 200
+//      Revision        Auto - Nnumber of seconds since midnight divided by two
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.4.*")]
+[assembly: AssemblyVersion("0.5.*")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
