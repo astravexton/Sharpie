@@ -11,6 +11,11 @@ Password =
 [Admin]
 AdminUser = Me
 
+[SSHLocal]
+Port =
+User =
+Pass =
+
 [LastFM]
 Key = 
 Secret = 
