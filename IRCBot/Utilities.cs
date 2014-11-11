@@ -264,6 +264,17 @@ namespace IRCBot
 			}
 		}
 	}
+    public class Stop
+    {
+        public class Error {
+            public static void Generic(int code)
+                {
+                    Console.ReadKey();
+                    System.Environment.Exit(code);
+                }
+        }
+        
+    }
 	public class MiscUtils
 	{
 		public static string GetRandomString()

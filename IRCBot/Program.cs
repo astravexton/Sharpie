@@ -44,21 +44,40 @@ namespace IRCBot
 			}
 			else
 			{
-				Configuration config = Configuration.LoadFromFile(@cfgPath);
+                Configuration config;
+                try
+                {
+                    config = Configuration.LoadFromFile(@cfgPath);
+                }
+                catch
+                {
+                    config = null;
+                    Status.Error("Configuration file not found");
+                    Stop.Error.Generic(2);
+                }
 
 				Section cfgConnection = config["Connection"];
 				Section cfgAdmin = config["Admin"];
 				Section cfgSSHLocal = config["SSHLocal"];
 				Section cfgLastFM = config["LastFM"];
 
+                // TODO: Switch these for global variables
 				server = cfgConnection["Server"].Value;
 				port = cfgConnection["Port"].GetValue<int>();
 				nick = cfgConnection["Nick"].Value;
 				channel = cfgConnection["Channel"].Value;
 				pass = cfgConnection["Password"].Value;
+                // TODO: Add Admin user functionality
 				Global.Master = cfgAdmin["AdminUser"].Value;
 
-				Config.SSHLocalPort = cfgSSHLocal["Port"].GetValue<int>();
+                try
+                {
+                    Config.SSHLocalPort = cfgSSHLocal["Port"].GetValue<int>();
+                }
+                catch
+                {
+                    Config.SSHLocalPort = 6667;
+                }
 				Config.SSHLocalUser = cfgSSHLocal["User"].Value;
 				Config.SSHLocalPass = cfgSSHLocal["Pass"].Value;
 
@@ -279,12 +298,12 @@ namespace IRCBot
 						}
 
 					}
-
 					// Close all streams
 					Status.Error("Shutdown");
 					writer.Close();
 					reader.Close();
 					irc.Close();
+                    Console.ReadKey();
 				}
 			}
 			catch (Exception e)
