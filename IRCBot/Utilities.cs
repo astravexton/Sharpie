@@ -38,7 +38,18 @@ namespace IRCBot
 	{
 		public static void Welcome()
 		{
-			Global.Version = " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().StartsWith("0.0."))
+            {
+                Global.Version = " ";
+                Global.Version += "Dev ";
+                Global.Version += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString();
+                Global.Version += ".";
+                Global.Version += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString();
+            }
+            else
+            {
+                Global.Version = " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
 			Console.Title = "Sharpie";
 			Console.ForegroundColor = ConsoleColor.Yellow;
 			Console.WriteLine("  ____  _                      _      ");
