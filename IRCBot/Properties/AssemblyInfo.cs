@@ -25,7 +25,7 @@ using System.Runtime.InteropServices;
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version   Major change to the architecture
-//      Minor Version   Add/Removed Plugin / small changes to the architecture
+//      Minor Version   Add/Removed Plugin, fixes, small changes to architecture
 //      Build Number    Auto
 //      Revision        Auto
 //
