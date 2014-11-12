@@ -48,16 +48,16 @@ namespace IRCBot
 		{
             if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().StartsWith("0.0."))
             {
-                Global.Version = " ";
-                Global.Version += "Dev ";
+                Global.Version = "Dev ";
                 Global.Version += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString();
                 Global.Version += ".";
                 Global.Version += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString();
             }
             else
             {
-                Global.Version = " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                Global.Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
+            string version = " " + Global.Version;
 			Console.Title = "Sharpie";
 			Console.ForegroundColor = ConsoleColor.Yellow;
 			Console.WriteLine("  ____  _                      _      ");
@@ -67,7 +67,7 @@ namespace IRCBot
 			Console.WriteLine(" |____/|_| |_|\\__,_|_|  | .__/|_|\\___|");
 			Console.ForegroundColor = ConsoleColor.DarkGray;
 			Console.Write(" ");
-			Console.Write(Global.Version.PadLeft(23, '='));
+			Console.Write(version.PadLeft(23, '='));
 			Console.ResetColor();
 			Console.ForegroundColor = ConsoleColor.Yellow;
 			Console.Write("|_|");
