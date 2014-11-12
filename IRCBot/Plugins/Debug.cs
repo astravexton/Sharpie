@@ -24,7 +24,7 @@ namespace IRCBot.Plugins
 		public static void FullMonty()
 		{
 			Plugins.Version.Start();
-			Say.IRC("Host: " + Global.IRCHost + Formatting.Sep() + "User: " + Global.IRCUser + Formatting.Sep() + "Channel: " + Global.IRCChannel + Formatting.Sep() + "Says: " + Global.Says + Formatting.Sep() + "Cmd: " + Global.IRCCommand + Formatting.Sep() + "Type: " + Global.IRCStatus);
+			Say.IRC("Host: " + Global.IRCHost + Formatting.Sep() + "User: " + Global.IRCUser + Formatting.Sep() + "Channel: " + Global.IRCChannel + Formatting.Sep() + "Prefix: " + Global.Says + Formatting.Sep() + "Cmd: " + Global.IRCCommand + Formatting.Sep() + "Type: " + Global.IRCStatus);
 			Say.IRC("Msg: " + Global.IRCMessage);
 		}
 		public static void OS()

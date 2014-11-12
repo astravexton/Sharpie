@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="GlobalVar.cs" />
     <Compile Include="Plugins\0click.cs" />
+    <Compile Include="Plugins\ZNC.cs" />
     <Compile Include="Plugins\HelloWorld.cs" />
     <Compile Include="Plugins\Quack.cs" />
     <Compile Include="Plugins\SSH.cs" />

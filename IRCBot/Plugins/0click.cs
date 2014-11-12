@@ -52,25 +52,12 @@ namespace IRCBot.Plugins
 				Say.IRC(Formatting.Icon("!") + Formatting.Sep() + searchResult.Heading.ToString());
 				Say.IRC(Formatting.Icon("?") + Formatting.Sep() + searchResult.Abstract.ToString());
 				Say.IRC(Formatting.Minor() + Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.AbstractSource.ToString() + ": " + searchResult.AbstractUrl.ToString());
-			}
+                Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.Redirect.ToString());
+            }
 			else
 			{
-				Say.IRC(Formatting.Minor() + "No results found :(");
+                Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.Redirect.ToString());
 			}
-		}
-
-		public static void Ducky(bool showLink)
-		{
-			var search = new Search
-			{
-				NoHtml = true,
-				NoRedirects = true,
-				IsSecure = true,
-				SkipDisambiguation = true,
-				ApiClient = new HttpWebApi()
-			};
-			var searchResult = search.Query("!ducky " + Global.IRCMessage, "Sharpie");
-			Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.Redirect.ToString());
 		}
 	}
 }

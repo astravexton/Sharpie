@@ -239,6 +239,10 @@ namespace IRCBot
 										Plugins.RSXView.Start();
 										writer.Flush();
 										break;
+                                    case "#znc.add":
+                                        Plugins.ZNC.AddUser();
+                                        writer.Flush();
+                                        break;
 
 									// one-liners
 									case "#consay":
@@ -246,7 +250,7 @@ namespace IRCBot
 										writer.Flush();
 										break;
 									case "#raw":
-										//writer.WriteLine("PRIVMSG #programming it werks");
+										Say.Raw(Global.IRCMessage);
 										writer.WriteLine(Global.IRCMessage);
 										writer.Flush();
 										break;

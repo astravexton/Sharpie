@@ -25,12 +25,15 @@ namespace IRCBot
 		{
 			Sharpie.writer.WriteLine("PRIVMSG " + Global.IRCChannel + " :" + Global.Says + "\u000314" + text);
 		}
-        public static void IRCError(string text)
+        public static void IRCError(string text, bool sendToConsole = true)
         {
             Sharpie.writer.WriteLine("PRIVMSG " + Global.IRCChannel + " :" + Global.Says + Formatting.IRC.Colors.Red() + text);
-            Status.Error(text);
+            if (sendToConsole == true)
+            {
+                Status.Error(text);
+            }
         }
-		public static void Cmd(string text)
+		public static void Raw(string text)
 		{
 			Sharpie.writer.WriteLine(text);
 		}
@@ -299,5 +302,24 @@ namespace IRCBot
 			path = path.Replace(".", ""); // Remove period.
 			return path;
 		}
+        public static string GetFirstWord(string text)
+        {
+            string firstWord = String.Empty;
+
+            // Check for empty string.
+            if (String.IsNullOrEmpty(text))
+            {
+                return string.Empty;
+            }
+
+            // Get first word from passed string
+            firstWord = text.Split(' ').FirstOrDefault();
+            if (String.IsNullOrEmpty(firstWord))
+            {
+                return string.Empty;
+            }
+
+            return firstWord;
+        }
 	}
 }
