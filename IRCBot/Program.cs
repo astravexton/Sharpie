@@ -115,6 +115,7 @@ namespace IRCBot
 
 			Console.Title = server + " | Sharpie";
 
+			// TODO: Async
 			try
 			{
 				Status.Do("Connecting to IRC: '" + SERVER + ":" + PORTToString + "'");
