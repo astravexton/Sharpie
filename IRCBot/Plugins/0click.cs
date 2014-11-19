@@ -17,6 +17,7 @@ namespace IRCBot.Plugins
 				NoHtml = true,
 				NoRedirects = true,
 				IsSecure = true,
+                SkipDisambiguation = true,
 				ApiClient = new HttpWebApi()
 			};
 			var searchResult = search.Query(Global.IRCMessage, "Sharpie");
@@ -28,6 +29,14 @@ namespace IRCBot.Plugins
 			{
 				Say.IRC(Formatting.Icon("?") + Formatting.Sep() + searchResult.Answer.ToString());
 			}
+            else if (searchResult.AnswerType == "conversions")
+            {
+                Say.IRC(Formatting.Icon("?") + Formatting.Sep() + searchResult.Answer.ToString());
+            }
+            else if (string.IsNullOrWhiteSpace(searchResult.Answer.ToString()) == false) 
+            {
+                Say.IRC(Formatting.Icon("?") + Formatting.Sep() + searchResult.Answer.ToString());
+            }
 			else if (string.IsNullOrWhiteSpace(searchResult.Heading.ToString()) == false)
 			{
 				Say.IRC(Formatting.Icon("!") + Formatting.Sep() + searchResult.Heading.ToString());
