@@ -201,7 +201,8 @@ namespace IRCBot
 								switch (Global.IRCCommand)
 								{
 									// self-contained
-									case "#0":
+									case "#":
+                                    case "#0":
 									case "#0click":
 									case "#ddg":
 									case "#duckduckgo":
