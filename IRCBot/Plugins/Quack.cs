@@ -11,15 +11,15 @@ namespace IRCBot.Plugins
 		public static void Start()
 		{
 			Say.Raw("Hello, world!");
-			var DuckySays = RandomSaying(Global.IRCUser, Global.IRCChannel);
-			Say.Raw("\u0001ACTION " + DuckySays + " \u0001");
-			if (DuckySays == "segfaults\x07")
+			var DuckyDoes = DuckyDoes(Global.IRCUser, Global.IRCChannel);
+			Say.Raw("\u0001ACTION " + DuckyDoes + " \u0001");
+			if (DuckyDoes == "segfaults\x07")
 			{
 				IRCBot.Sharpie.writer.WriteLine("PART " + Global.IRCChannel + " Something has gone horribly wrong here.");
 				IRCBot.Sharpie.writer.WriteLine("JOIN " + Global.IRCChannel);
 			}
 		}
-		public static string RandomSaying(string user, string chan)
+		public static string DuckDoes(string user, string chan)
 		{
 			string[] sayings = {
 				"bashes " + user + "'s f'ckin' 'ed in",
