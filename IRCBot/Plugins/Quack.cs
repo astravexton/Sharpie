@@ -10,13 +10,22 @@ namespace IRCBot.Plugins
 	{
 		public static void Start()
 		{
-			Say.Raw("Hello, world!");
-			var DuckyDoes = DuckyDoes(Global.IRCUser, Global.IRCChannel);
-			Say.Raw("\u0001ACTION " + DuckyDoes + " \u0001");
-			if (DuckyDoes == "segfaults\x07")
+			string WhatDoesDuckyDo == TrueOrFalse();
+			if(WhatDoesDuckyDo == true) {
+				// does
+				var DuckyDoes = DuckyDoes(Global.IRCUser, Global.IRCChannel);
+				Say.Raw("\u0001ACTION " + DuckyDoes + " \u0001");
+				if (DuckyDoes == "segfaults\x07")
+				{
+					IRCBot.Sharpie.writer.WriteLine("PART " + Global.IRCChannel + " Something has gone horribly wrong here.");
+					IRCBot.Sharpie.writer.WriteLine("JOIN " + Global.IRCChannel);
+				}
+			}
+			else
 			{
-				IRCBot.Sharpie.writer.WriteLine("PART " + Global.IRCChannel + " Something has gone horribly wrong here.");
-				IRCBot.Sharpie.writer.WriteLine("JOIN " + Global.IRCChannel);
+				// says
+				var DuckySays = DuckySays(Global.IRCUser, Global.IRCChannel);
+				Say.Raw(DuckySays);
 			}
 		}
 		public static string DuckDoes(string user, string chan)
@@ -54,5 +63,25 @@ namespace IRCBot.Plugins
 			};
 			return sayings[new Random().Next(0, sayings.Length)];
 		}
+		public static string DuckSays(string user, string chan)
+		{
+			string[] sayings = {
+				"Hello, world!"
+			};
+			return sayings[new Random().Next(0, sayings.Length)];
+		}
+		public static bool TrueOrFalse(string user, string chan)
+		{
+			Random gen = new Random();
+			int prob = gen.Next(100);
+			if (prob < 50) {
+			    return true;
+			}
+			else
+			{
+			    return false;
+			}
+		}
+		
 	}
 }
