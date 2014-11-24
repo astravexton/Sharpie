@@ -70,7 +70,7 @@ namespace IRCBot.Plugins
 			};
 			return sayings[new Random().Next(0, sayings.Length)];
 		}
-		public static bool TrueOrFalse(string user, string chan)
+		public static bool TrueOrFalse()
 		{
 			Random gen = new Random();
 			int prob = gen.Next(100);
