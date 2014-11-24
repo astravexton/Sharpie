@@ -11,4 +11,4 @@
 *Sharpie* is **an IRC Bot built in C#**, compatible with both .NET and Mono.
   
 ## License
-MIT License -- http://ducky.mit-license.org/
+MIT License -- http://bsx.fr/Ducky%E2%99%A5MIT
