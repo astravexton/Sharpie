@@ -30,6 +30,10 @@ using System.Runtime.InteropServices;
 //      Build Number    Auto - Number of days since January 1, 200
 //      Revision        Auto - Nnumber of seconds since midnight divided by two
 //
+//      0.0.*           During initial dev stage
+//
+//      Only update these when you plan to make a release!
+//
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
