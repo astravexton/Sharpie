@@ -10,9 +10,9 @@ namespace IRCBot.Plugins
 	{
 		public static void Start()
 		{
-			Say.IRC("Hello, world!");
+			Say.Raw("Hello, world!");
 			var DuckySays = RandomSaying(Global.IRCUser, Global.IRCChannel);
-			Say.IRC("\u0001ACTION " + DuckySays + " \u0001");
+			Say.Raw("\u0001ACTION " + DuckySays + " \u0001");
 			if (DuckySays == "segfaults\x07")
 			{
 				IRCBot.Sharpie.writer.WriteLine("PART " + Global.IRCChannel + " Something has gone horribly wrong here.");
