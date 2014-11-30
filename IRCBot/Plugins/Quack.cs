@@ -10,10 +10,10 @@ namespace IRCBot.Plugins
 	{
 		public static void Start()
 		{
-			string WhatDoesDuckyDo == TrueOrFalse();
+			bool WhatDoesDuckyDo = TrueOrFalse();
 			if(WhatDoesDuckyDo == true) {
 				// does
-				var DuckyDoes = DuckyDoes(Global.IRCUser, Global.IRCChannel);
+				var DuckyDoes = Does(Global.IRCUser, Global.IRCChannel);
 				Say.Raw("\u0001ACTION " + DuckyDoes + " \u0001");
 				if (DuckyDoes == "segfaults\x07")
 				{
@@ -24,11 +24,11 @@ namespace IRCBot.Plugins
 			else
 			{
 				// says
-				var DuckySays = DuckySays(Global.IRCUser, Global.IRCChannel);
+				var DuckySays = Says(Global.IRCUser, Global.IRCChannel);
 				Say.Raw(DuckySays);
 			}
 		}
-		public static string DuckDoes(string user, string chan)
+		public static string Does(string user, string chan)
 		{
 			string[] sayings = {
 				"bashes " + user + "'s f'ckin' 'ed in",
@@ -63,7 +63,7 @@ namespace IRCBot.Plugins
 			};
 			return sayings[new Random().Next(0, sayings.Length)];
 		}
-		public static string DuckSays(string user, string chan)
+		public static string Says(string user, string chan)
 		{
 			string[] sayings = {
 				"Hello, world!"
