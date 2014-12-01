@@ -56,8 +56,8 @@ namespace IRCBot
                     Stop.Error.Generic(2);
                 }
 
+                Section cfgMain = config["Main"];
 				Section cfgConnection = config["Connection"];
-				Section cfgAdmin = config["Admin"];
 				Section cfgLastFM = config["LastFM"];
                 Section cfgPornMD = config["PornMD"];
                 Section cfgSSHLocal = config["SSHLocal"];
@@ -69,7 +69,9 @@ namespace IRCBot
 				channel = cfgConnection["Channel"].Value;
 				pass = cfgConnection["Password"].Value;
                 // TODO: Add Admin user functionality
-				Global.Master = cfgAdmin["AdminUser"].Value;
+				Global.Master = cfgMain["AdminUser"].Value;
+
+                Config.MainOSName = cfgMain["OSName"].Value;
 
                 try
                 {
@@ -244,6 +246,10 @@ namespace IRCBot
 										Plugins.SSH.Local();
 										writer.Flush();
 										break;
+                                    case "#thing":
+                                        Plugins.Things.Start();
+                                        writer.Flush();
+                                        break;
 									case "#ver":
 									case "#version":
 										Plugins.Version.Start();

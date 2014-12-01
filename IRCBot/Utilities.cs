@@ -20,7 +20,7 @@ namespace IRCBot
 	{
 		public static void IRC(string text)
 		{
-			Sharpie.writer.WriteLine("PRIVMSG " + Global.IRCChannel + " :" + Global.Says + text);
+			Sharpie.writer.WriteLine("PRIVMSG " + Global.IRCChannel + " :" + Formatting.IRC.Reset() + Global.Says + text);
 		}
 		public static void IRCMinor(string text)
 		{

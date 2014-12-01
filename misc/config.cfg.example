@@ -1,5 +1,7 @@
 [Main]
 AppName = Sharpie
+AdminUser = Me
+OSName =
 
 
 [Connection]
@@ -8,10 +10,6 @@ Port = 6667
 Nick = Sharpie
 Channel = test
 Password = 
-
-
-[Admin]
-AdminUser = Me
 
 
 [LastFM]

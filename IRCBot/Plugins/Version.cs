@@ -11,7 +11,7 @@ namespace IRCBot.Plugins
 	{
 		public static void Start()
 		{
-            Say.IRC(Formatting.Icon("Sharpie") + Formatting.Sep() + Global.Version + Formatting.Sep() + Environment.OSVersion + " (" + Environment.MachineName + ")" + Formatting.Sep() + IsThisMono() + Debug());
+            Say.IRC(Formatting.Icon("Sharpie") + Formatting.Sep() + Global.Version + Formatting.Sep() + OS() + " (" + Environment.MachineName + ")" + Formatting.Sep() + IsThisMono() + Debug());
 		}
 		public static string IsThisMono()
 		{
@@ -32,5 +32,16 @@ namespace IRCBot.Plugins
 				return "";
 			}
 		}
+        public static string OS()
+        {
+            if (String.IsNullOrEmpty(Config.MainOSName))
+            {
+                return Environment.OSVersion.ToString();
+            }
+            else
+            {
+                return Config.MainOSName;
+            }
+        }
 	}
 }

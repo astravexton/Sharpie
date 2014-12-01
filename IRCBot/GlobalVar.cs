@@ -19,6 +19,7 @@ namespace IRCBot
 		public static String Says = "";
 		public static String QuitKey = "";
 		public static String Master = "";
+        public static String OSOverride = "";
 	}
 
 	public static class Stream
@@ -33,14 +34,14 @@ namespace IRCBot
 	public static class Config
 	{
 		public static String MainAppName = "";
+        public static String MainAdminUser = "";
+        public static String MainOSName = "";
 
 		public static String ConnectionServer = "";
 		public static Int32 ConnectionPort = 0;
 		public static String ConnectionNick = "";
 		public static String ConnectionChannel = "";
 		public static String Password = "";
-
-		public static String AdminAdminUser = "";
 
 		public static String LastFMKey = "";
 		public static String LastFMSecret = "";
