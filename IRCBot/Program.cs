@@ -74,6 +74,8 @@ namespace IRCBot
 				Global.Master = cfgMain["AdminUser"].Value;
                 Config.MainOSName = cfgMain["OSName"].Value;
 
+                Global.UAS = Config.MainAppName + " | Sharpie/" + Global.Version + " (" + Plugins.Version.OS() + ")";
+
                 try
                 {
                     Config.SSHLocalPort = cfgSSHLocal["Port"].GetValue<int>();
@@ -86,7 +88,7 @@ namespace IRCBot
                 Config.LastFMSecret = cfgLastFM["Secret"].Value;
                 Config.PornMDOrientation = cfgPornMD["Orientation"].Value;
 				Config.SSHLocalUser = cfgSSHLocal["User"].Value;
-				Config.SSHLocalPass = cfgSSHLocal["Pass"].Value;
+                Config.SSHLocalPass = cfgSSHLocal["Pass"].Value;
 
 				Status.OK("Using '" + cfgPath + "' for settings");
 			}

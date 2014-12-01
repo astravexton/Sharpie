@@ -62,7 +62,7 @@ namespace IRCBot.Plugins
             }
 
             var client = new WebClient();
-            client.Headers.Add("User-Agent", "Sharpie"); //my endpoint needs this...
+            client.Headers.Add("User-Agent", Global.UAS); //my endpoint needs this...
             try
             {
                 var response = client.DownloadString(new Uri("http://www.pornmd.com/" + orientation + "/" + query + "?start=50&ajax=true&limit=50&format=json" + recent));

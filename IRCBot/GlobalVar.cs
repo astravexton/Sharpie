@@ -19,7 +19,7 @@ namespace IRCBot
 		public static String Says = "";
 		public static String QuitKey = "";
 		public static String Master = "";
-        public static String OSOverride = "";
+        public static String UAS = "";
 	}
 
 	public static class Stream
