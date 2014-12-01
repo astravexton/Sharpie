@@ -1,6 +1,7 @@
 [Main]
 AppName = Sharpie
 
+
 [Connection]
 Server = irc.hostname.tld
 Port = 6667
@@ -8,14 +9,23 @@ Nick = Sharpie
 Channel = test
 Password = 
 
+
 [Admin]
 AdminUser = Me
+
+
+[LastFM]
+Key = 
+Secret = 
+
+
+[PornMD]
+Orientation = 
+; default search orientation
+; possible: gay | shemale | straight
+
 
 [SSHLocal]
 Port =
 User =
 Pass =
-
-[LastFM]
-Key = 
-Secret = 
