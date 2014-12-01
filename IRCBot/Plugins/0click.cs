@@ -12,6 +12,15 @@ namespace IRCBot.Plugins
 	{
 		public static void Start()
 		{
+            string query;
+            if (String.IsNullOrEmpty(Global.IRCMessage))
+            {
+                query = "i forgot to type anything in here so tickle me";
+            }
+            else
+            {
+                query = Global.IRCMessage;
+            }
 			var search = new Search
 			{
 				NoHtml = true,
@@ -20,7 +29,7 @@ namespace IRCBot.Plugins
                 SkipDisambiguation = true,
 				ApiClient = new HttpWebApi()
 			};
-			var searchResult = search.Query(Global.IRCMessage, "Sharpie");
+			var searchResult = search.Query(query, "Sharpie");
 			if (Global.IRCMessage.StartsWith("!"))
 			{
 				Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.Redirect.ToString());
@@ -59,55 +68,6 @@ namespace IRCBot.Plugins
 				//Say.IRCMinor(Formatting.Icon("\u266B") + Formatting.Sep() + Formatting.Minor() + "Nothing found");
 			}
 
-		}
-		public static void StartOld()
-		{
-			var search = new Search
-			{
-				NoHtml = true,
-				NoRedirects = true,
-				IsSecure = true,
-				SkipDisambiguation = true,
-				ApiClient = new HttpWebApi()
-			};
-			var searchResult = search.Query(Global.IRCMessage, "Sharpie");
-
-			if (Global.IRCMessage.StartsWith("!"))
-			{
-
-				if (Global.IRCMessage.StartsWith("!porn"))
-				{
-					if (Global.IRCMessage.StartsWith("!porn.gay"))
-					{
-						var query = Global.IRCMessage.Substring(10, Global.IRCMessage.Length - 10);
-						query = query.Replace(" ", "+");
-						query = "http://www.pornmd.com/gay/" + query + "?";
-						Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + query);
-					}
-					else if (Global.IRCMessage.StartsWith("!porn.str8"))
-					{
-						var query = Global.IRCMessage.Substring(11, Global.IRCMessage.Length - 11);
-						query = query.Replace(" ", "+");
-						query = "http://www.pornmd.com/straight/" + query + "?";
-						Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + query);
-					}
-				}
-				else
-				{
-					Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.Redirect.ToString());
-				}
-			}
-			else if (string.IsNullOrWhiteSpace(searchResult.Heading.ToString()) == false)
-			{
-				Say.IRC(Formatting.Icon("!") + Formatting.Sep() + searchResult.Heading.ToString());
-				Say.IRC(Formatting.Icon("?") + Formatting.Sep() + searchResult.Abstract.ToString());
-				Say.IRC(Formatting.Minor() + Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.AbstractSource.ToString() + ": " + searchResult.AbstractUrl.ToString());
-				Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.Redirect.ToString());
-			}
-			else
-			{
-				Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.Redirect.ToString());
-			}
 		}
 	}
 }
