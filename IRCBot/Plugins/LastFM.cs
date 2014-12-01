@@ -22,11 +22,11 @@ namespace IRCBot.Plugins
 			try
 			{
 				NP = user.GetNowPlaying().ToString();
-				Say.IRCMinor(Formatting.Icon("\u266B") + Formatting.Sep() + NP);
+				Say.IRCMinor(Formatting.Icon("\u266B") + Formatting.SepMajor() + NP);
 			}
 			catch
 			{
-				Say.IRCMinor(Formatting.Icon("\u266B") + Formatting.Sep() + Formatting.Minor() + "Nothing is playing :(");
+				Say.IRCMinor(Formatting.Icon("\u266B") + Formatting.SepMajor() + Formatting.Minor() + "Nothing is playing :(");
 			}
 		}
 	}

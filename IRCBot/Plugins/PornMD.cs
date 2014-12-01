@@ -115,8 +115,8 @@ namespace IRCBot.Plugins
                     Say.IRC(Formatting.Icon("?") + Formatting.Sep()
                         + source + Formatting.SepMinor()
                         + o.videos[resultNumber].rating.ToString() + "%" + Formatting.SepMinor()
-                        + o.videos[resultNumber].duration + Formatting.SepMinor()
-                        + o.videos[resultNumber].pub_date.Substring(1));
+                        + o.videos[resultNumber].duration.Substring(1) + Formatting.SepMinor()
+                        + o.videos[resultNumber].pub_date);
                     Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + videoURL + Formatting.IRC.Style.Bold() + Formatting.IRC.Colors.Red() + " [nsfw]");
                 }
             }

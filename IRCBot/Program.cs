@@ -68,9 +68,10 @@ namespace IRCBot
 				nick = cfgConnection["Nick"].Value;
 				channel = cfgConnection["Channel"].Value;
 				pass = cfgConnection["Password"].Value;
+
+                Config.MainAppName = cfgMain["AppName"].Value;
                 // TODO: Add Admin user functionality
 				Global.Master = cfgMain["AdminUser"].Value;
-
                 Config.MainOSName = cfgMain["OSName"].Value;
 
                 try

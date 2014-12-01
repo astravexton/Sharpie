@@ -168,6 +168,10 @@ namespace IRCBot
         {
             return " \u000314\u00B7 \u000f";
         }
+        public static string SepMajor()
+        {
+            return " | ";
+        }
 		public static string Icon(string icon)
 		{
 			return "\u0002\u000300" + icon + "\u000f";

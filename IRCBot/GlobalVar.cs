@@ -34,7 +34,7 @@ namespace IRCBot
 	public static class Config
 	{
 		public static String MainAppName = "";
-        public static String MainAdminUser = "";
+        public static String MainAdminUser = Global.Master;
         public static String MainOSName = "";
 
 		public static String ConnectionServer = "";

@@ -11,7 +11,14 @@ namespace IRCBot.Plugins
 	{
 		public static void Start()
 		{
-            Say.IRC(Formatting.Icon("Sharpie") + Formatting.Sep() + "http://sharpie.rocks/");
+            if (Config.MainAppName == "Sharpie" || String.IsNullOrEmpty(Config.MainAppName))
+            {
+                Say.IRC(Formatting.Icon("Sharpie") + Formatting.SepMinor() + "http://sharpie.rocks/");
+            }
+            else
+            {
+                Say.IRC(Formatting.Icon(Config.MainAppName) + Formatting.Sep() + "powered by" + Formatting.IRC.Style.Bold() + " Sharpie" + Formatting.IRC.Reset() + Formatting.SepMinor() + "http://sharpie.rocks/");
+            } 
 		}
 	}
 }
