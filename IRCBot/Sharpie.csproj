@@ -83,6 +83,7 @@
     <Compile Include="Plugins\0click.cs" />
     <Compile Include="Plugins\About.cs" />
     <Compile Include="Plugins\PornMD.cs" />
+    <Compile Include="Plugins\Things.cs" />
     <Compile Include="Plugins\ZNC.cs" />
     <Compile Include="Plugins\HelloWorld.cs" />
     <Compile Include="Plugins\Quack.cs" />
