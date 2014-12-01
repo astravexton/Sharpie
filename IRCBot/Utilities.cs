@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using System.Net;
 
 namespace IRCBot
 {
@@ -163,6 +164,10 @@ namespace IRCBot
 		{
 			return " \u000314| \u000f";
 		}
+        public static string SepMinor()
+        {
+            return " \u000314\u00B7 \u000f";
+        }
 		public static string Icon(string icon)
 		{
 			return "\u0002\u000300" + icon + "\u000f";
@@ -296,6 +301,15 @@ namespace IRCBot
     }
 	public class MiscUtils
 	{
+        public static string GetRedir(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AllowAutoRedirect = false;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string redirUrl = response.Headers["Location"];
+
+            return redirUrl;
+        }
 		public static string GetRandomString()
 		{
 			string path = Path.GetRandomFileName();

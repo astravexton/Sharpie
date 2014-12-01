@@ -46,7 +46,7 @@ namespace IRCBot.Plugins
 				}
 				if (string.IsNullOrWhiteSpace(searchResult.AbstractSource.ToString()) == false)
 				{
-					Say.IRC(Formatting.Minor() + Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.AbstractSource.ToString() + ": " + searchResult.AbstractUrl.ToString());
+                    Say.IRC(Formatting.Minor() + Formatting.Icon("\u2197") + Formatting.Sep() + searchResult.AbstractSource.ToString() + ": " + searchResult.AbstractUrl.ToString());
 				}
 				else
 				{

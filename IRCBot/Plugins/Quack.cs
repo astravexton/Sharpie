@@ -14,7 +14,7 @@ namespace IRCBot.Plugins
 			if(WhatDoesDuckyDo == true) {
 				// does
 				var DuckyDoes = Does(Global.IRCUser, Global.IRCChannel);
-				Say.Raw("\u0001ACTION " + DuckyDoes + " \u0001");
+				Say.Raw("PRIVMSG " + Global.IRCChannel + " :" + "\u0001ACTION " + DuckyDoes + " \u0001");
 				if (DuckyDoes == "segfaults\x07")
 				{
 					IRCBot.Sharpie.writer.WriteLine("PART " + Global.IRCChannel + " Something has gone horribly wrong here.");
@@ -25,7 +25,7 @@ namespace IRCBot.Plugins
 			{
 				// says
 				var DuckySays = Says(Global.IRCUser, Global.IRCChannel);
-				Say.Raw(DuckySays);
+                Say.Raw("PRIVMSG " + Global.IRCChannel + " :" + DuckySays);
 			}
 		}
 		public static string Does(string user, string chan)

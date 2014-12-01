@@ -58,8 +58,9 @@ namespace IRCBot
 
 				Section cfgConnection = config["Connection"];
 				Section cfgAdmin = config["Admin"];
-				Section cfgSSHLocal = config["SSHLocal"];
 				Section cfgLastFM = config["LastFM"];
+                Section cfgPornMD = config["PornMD"];
+                Section cfgSSHLocal = config["SSHLocal"];
 
                 // TODO: Switch these for global variables
 				server = cfgConnection["Server"].Value;
@@ -78,11 +79,11 @@ namespace IRCBot
                 {
                     Config.SSHLocalPort = 6667;
                 }
+                Config.LastFMKey = cfgLastFM["Key"].Value;
+                Config.LastFMSecret = cfgLastFM["Secret"].Value;
+                Config.PornMDOrientation = cfgPornMD["Orientation"].Value;
 				Config.SSHLocalUser = cfgSSHLocal["User"].Value;
 				Config.SSHLocalPass = cfgSSHLocal["Pass"].Value;
-
-				Config.LastFMKey = cfgLastFM["Key"].Value;
-				Config.LastFMSecret = cfgLastFM["Secret"].Value;
 
 				Status.OK("Using '" + cfgPath + "' for settings");
 			}
@@ -209,7 +210,12 @@ namespace IRCBot
 									case "#zero":
 										Plugins.ZeroClick.Start();
 										writer.Flush();
-										break;		
+										break;	
+	                                case "#about":
+                                    case "#help":
+                                        Plugins.About.Start();
+                                        writer.Flush();
+                                        break;
 									case "#debug":
 									case "#info":
 										Plugins.Debug.Start();
@@ -223,6 +229,12 @@ namespace IRCBot
 										Plugins.LastFM.Start();
 										writer.Flush();
 										break;
+                                    case "#porn":
+                                    case "#pornmd":
+                                    case "#porn.md":
+                                        Plugins.PornMD.Start();
+                                        writer.Flush();
+                                        break;
 									case "#quack":
 									case "!quack":
 										Plugins.Quack.Start();
