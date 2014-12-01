@@ -9,10 +9,10 @@ using Newtonsoft.Json;
 
 namespace IRCBot.Plugins
 {
-	class PornMD
-	{
-		public static void Start()
-		{
+    class PornMD
+    {
+        public static void Start()
+        {
             string query = Global.IRCMessage.Replace("--straight", "")
                 .Replace("--gay", "")
                 .Replace("--shemale", "")
@@ -20,7 +20,8 @@ namespace IRCBot.Plugins
                 .Replace("--top", "")
                 .Replace("--recent", "")
                 .Replace("--relevant", "")
-                .Replace("--best", "");
+                .Replace("--best", "")
+                .Replace("--more", "");
             string orientation = Config.PornMDOrientation;
             bool random = false;
             string recent = "";
@@ -101,21 +102,28 @@ namespace IRCBot.Plugins
                         break;
                 }
 
-                var videoURL = MiscUtils.GetRedir("http://www.pornmd.com" + o.videos[resultNumber].link);
-                //var videoURL = "http://www.pornmd.com" + o.videos[resultNumber].link;
+                if (Global.IRCMessage.Contains("--more"))
+                {
+                    Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + "http://www.porn.md/" + orientation + "/" + query.Replace(" ", "+"));
+                }
+                else
+                {
+                    var videoURL = MiscUtils.GetRedir("http://www.pornmd.com" + o.videos[resultNumber].link);
+                    //var videoURL = "http://www.pornmd.com" + o.videos[resultNumber].link;
 
-                Say.IRC(Formatting.Icon("!") + Formatting.Sep() + o.videos[resultNumber].title);
-                Say.IRC(Formatting.Icon("?") + Formatting.Sep()
-                    + source + Formatting.SepMinor()
-                    + o.videos[resultNumber].rating.ToString() + "%" + Formatting.SepMinor()
-                    + o.videos[resultNumber].duration + Formatting.SepMinor()
-                    + o.videos[resultNumber].pub_date.Substring(1));
-                Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + videoURL + Formatting.IRC.Style.Bold() + Formatting.IRC.Colors.Red() + " [nsfw]");
+                    Say.IRC(Formatting.Icon("!") + Formatting.Sep() + o.videos[resultNumber].title);
+                    Say.IRC(Formatting.Icon("?") + Formatting.Sep()
+                        + source + Formatting.SepMinor()
+                        + o.videos[resultNumber].rating.ToString() + "%" + Formatting.SepMinor()
+                        + o.videos[resultNumber].duration + Formatting.SepMinor()
+                        + o.videos[resultNumber].pub_date.Substring(1));
+                    Say.IRC(Formatting.Icon("\u2197") + Formatting.Sep() + videoURL + Formatting.IRC.Style.Bold() + Formatting.IRC.Colors.Red() + " [nsfw]");
+                }
             }
             catch
             {
             }
-		}
+        }
 
         public class JSON
         {
@@ -134,5 +142,5 @@ namespace IRCBot.Plugins
                 public string pub_date { get; set; }
             }
         }
-	}
+    }
 }
