@@ -28,7 +28,7 @@ using System.Runtime.InteropServices;
 //      Minor Version   When you add functionality in a backwards-compatible manner
 //                      When you make backwards-compatible bug fixes
 //      Build Number    Auto - Number of days since January 1, 2000
-//      Revision        Auto - Nnumber of seconds since midnight divided by two
+//      Revision        Auto - Number of seconds since midnight divided by two
 //
 //      0.0.*           During initial dev stage
 //
